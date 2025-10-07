@@ -9,6 +9,7 @@ export const HeaderWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-top: 32px;
+  gap: 80px;
 `;
 
 export const HeaderLogo = styled.img`
@@ -34,13 +35,16 @@ export const NavElement = styled.div<NavElemetProps>`
   color: ${({ focused }) => (focused ? "#FFFFFF" : "#575757")};
   line-height: 100%;
   letter-spacing: 6%;
+  padding-bottom: 4px;
 
   &::after {
     content: "";
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: ${({ focused }) => (focused ? "100%" : "0%")};
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: ${({ focused }) =>
+      focused ? "120%" : "0%"}; /* 120% makes it 20% wider */
     height: 4px;
     background-color: #ed1c24;
     transition: width 0.3s ease;
