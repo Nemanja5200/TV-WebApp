@@ -6,7 +6,7 @@ export const Home: FC = () => {
   return (
     <>
       <HomeContainer>
-        <Header />
+        <Header focusKey={"NAV"} />
       </HomeContainer>
     </>
   );

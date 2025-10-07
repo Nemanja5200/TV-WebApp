@@ -1,26 +1,39 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import {
   HeaderLogo,
   HeaderWrapper,
-  NavElement,
   NavMenuContainer,
 } from "@/components/Header/styles/Header.style.ts";
 import { IMAGE_PATHS } from "@/constants/imagePaths.ts";
-import { NAVBAR } from "@/components/Header/contstants/NavElements.ts";
+import { NAVBAR } from "@/components/Header/type/NavElements.ts";
+import {
+  FocusContext,
+  useFocusable,
+} from "@noriginmedia/norigin-spatial-navigation";
+import { NavItem } from "@/components/Header/components/NavItem.tsx";
+import { HeaderProps } from "@/components/Header/type/HeaderProps.ts";
 
-export const Header: FC = () => {
+export const Header: FC<HeaderProps> = ({ focusKey: focusNav }) => {
+  const { ref, focusSelf } = useFocusable({
+    focusKey: focusNav,
+  });
+
+  useEffect(() => {
+    focusSelf();
+  }, [focusSelf]);
+
   return (
     <>
-      <HeaderWrapper>
-        <HeaderLogo src={IMAGE_PATHS.LOGO} />
-        <NavMenuContainer>
-          {Object.entries(NAVBAR).map(([key, label], index) => (
-            <NavElement key={key} focused={index === 0}>
-              {label.toUpperCase()}
-            </NavElement>
-          ))}
-        </NavMenuContainer>
-      </HeaderWrapper>
+      <FocusContext.Provider value={focusNav}>
+        <HeaderWrapper>
+          <HeaderLogo src={IMAGE_PATHS.LOGO} />
+          <NavMenuContainer ref={ref}>
+            {Object.entries(NAVBAR).map(([key, label]) => (
+              <NavItem key={key} navKey={`${focusNav}-${key}`} label={label} />
+            ))}
+          </NavMenuContainer>
+        </HeaderWrapper>
+      </FocusContext.Provider>
     </>
   );
 };

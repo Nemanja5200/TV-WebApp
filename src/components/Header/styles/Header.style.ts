@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { NavElemetProps } from "@/components/Header/contstants/HeaderStyleProps.ts";
+import { NavElemetProps } from "@/components/Header/type/HeaderStyleProps.ts";
 
 export const HeaderWrapper = styled.div`
   width: 1841px;
