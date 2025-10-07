@@ -2,14 +2,15 @@ import styled from "styled-components";
 import { NavElemetProps } from "@/components/Header/type/HeaderStyleProps.ts";
 
 export const HeaderWrapper = styled.div`
-  width: 1841px;
-  height: 60px;
+  min-width: 1841px;
+  min-height: 60px;
 
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-top: 32px;
   gap: 80px;
+  margin-left: 32px;
 `;
 
 export const HeaderLogo = styled.img`
