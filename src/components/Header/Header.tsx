@@ -2,7 +2,7 @@ import { FC } from "react";
 import {
   HeaderLogo,
   HeaderWrapper,
-  NavElemet,
+  NavElement,
   NavMenuContainer,
 } from "@/components/Header/styles/Header.style.ts";
 import { IMAGE_PATHS } from "@/constants/imagePaths.ts";
@@ -15,9 +15,9 @@ export const Header: FC = () => {
         <HeaderLogo src={IMAGE_PATHS.LOGO} />
         <NavMenuContainer>
           {Object.entries(NAVBAR).map(([key, label], index) => (
-            <NavElemet key={key} focused={index === 0}>
+            <NavElement key={key} focused={index === 0}>
               {label.toUpperCase()}
-            </NavElemet>
+            </NavElement>
           ))}
         </NavMenuContainer>
       </HeaderWrapper>

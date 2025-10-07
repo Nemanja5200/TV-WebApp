@@ -26,7 +26,7 @@ export const NavMenuContainer = styled.div`
   gap: 88px;
 `;
 
-export const NavElemet = styled.div<NavElemetProps>`
+export const NavElement = styled.div<NavElemetProps>`
   position: relative;
   font-family: Inter, sans-serif;
   font-weight: 700;
