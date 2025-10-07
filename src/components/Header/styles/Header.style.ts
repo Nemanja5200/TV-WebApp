@@ -1,14 +1,48 @@
 import styled from "styled-components";
-
-
+import { NavElemetProps } from "@/components/Header/contstants/HeaderStyleProps.ts";
 
 export const HeaderWrapper = styled.div`
+  width: 1841px;
+  height: 60px;
 
-    width: 1841px;
-    height: 60px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid gold;
-`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 32px;
+`;
+
+export const HeaderLogo = styled.img`
+  width: 301.8px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const NavMenuContainer = styled.div`
+  flex: 1;
+  display: flex;
+  padding: 10px 0px 10px 20px;
+  gap: 88px;
+`;
+
+export const NavElemet = styled.div<NavElemetProps>`
+  position: relative;
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: ${({ focused }) => (focused ? "#FFFFFF" : "#575757")};
+  line-height: 100%;
+  letter-spacing: 6%;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: ${({ focused }) => (focused ? "100%" : "0%")};
+    height: 4px;
+    background-color: #ed1c24;
+    transition: width 0.3s ease;
+  }
+`;
