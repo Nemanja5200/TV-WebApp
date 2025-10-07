@@ -29,7 +29,7 @@ export const Header: FC<HeaderProps> = ({ focusKey: focusNav }) => {
           <HeaderLogo src={IMAGE_PATHS.LOGO} />
           <NavMenuContainer ref={ref}>
             {Object.entries(NAVBAR).map(([key, label]) => (
-              <NavItem key={key} navKey={`${focusNav}-${key}`} label={label} />
+              <NavItem key={key} navKey={key} label={label} />
             ))}
           </NavMenuContainer>
         </HeaderWrapper>

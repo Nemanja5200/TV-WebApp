@@ -44,7 +44,7 @@ export const NavElement = styled.div<NavElemetProps>`
     left: 50%;
     transform: translateX(-50%);
     width: ${({ focused }) =>
-      focused ? "120%" : "0%"}; /* 120% makes it 20% wider */
+      focused ? "130%" : "0%"}; /* 120% makes it 20% wider */
     height: 4px;
     background-color: #ed1c24;
     transition: width 0.3s ease;
