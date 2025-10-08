@@ -1,3 +1,3 @@
 export interface NavElemetProps {
-  focused: boolean;
+  $focused: boolean;
 }

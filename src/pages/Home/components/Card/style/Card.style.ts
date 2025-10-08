@@ -1,19 +1,20 @@
 import styled from "styled-components";
 
-export const CardContainer = styled.div<{ focused: boolean }>`
+export const CardContainer = styled.div<{ $focused: boolean }>`
   min-width: 252px;
   min-height: 359px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  --text-color: ${({ focused }) => (focused ? "#FFFFFF" : "#ffffff99")};
-  --is-focused: ${({ focused }) => (focused ? 1 : 0)};
+  --text-color: ${({ $focused }) => ($focused ? "#FFFFFF" : "#ffffff99")};
+  --is-focused: ${({ $focused }) => ($focused ? 1 : 0)};
 `;
 
 export const CardPoster = styled.img`
   width: 229px;
   height: 300px;
+
   border-radius: 6px;
   border: calc(var(--is-focused) * 6px) solid #ed1c24;
 `;

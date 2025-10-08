@@ -2,6 +2,7 @@ import {
   FocusableComponentLayout,
   FocusDetails,
 } from "@noriginmedia/norigin-spatial-navigation";
+import { MoviesResponse } from "@/types/Movies.ts";
 
 export interface DisplayRowPropsType {
   header: string;
@@ -11,4 +12,6 @@ export interface DisplayRowPropsType {
     props: object,
     details: FocusDetails,
   ) => void;
+
+  data: MoviesResponse;
 }

@@ -33,7 +33,7 @@ export const NavElement = styled.div<NavElemetProps>`
   font-family: Inter, sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
-  color: ${({ focused }) => (focused ? "#FFFFFF" : "#575757")};
+  color: ${({ $focused }) => ($focused ? "#FFFFFF" : "#575757")};
   line-height: 100%;
   letter-spacing: 6%;
   padding-bottom: 4px;
@@ -44,8 +44,8 @@ export const NavElement = styled.div<NavElemetProps>`
     bottom: -12px;
     left: 50%;
     transform: translateX(-50%);
-    width: ${({ focused }) =>
-      focused ? "130%" : "0%"}; /* 120% makes it 20% wider */
+    width: ${({ $focused }) =>
+      $focused ? "130%" : "0%"}; /* 120% makes it 20% wider */
     height: 4px;
     background-color: #ed1c24;
     transition: width 0.3s ease;

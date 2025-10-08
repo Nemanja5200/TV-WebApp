@@ -7,17 +7,18 @@ import {
 } from "@/pages/Home/components/Card/style/Card.style.ts";
 import { CardProps } from "@/pages/Home/types/HomeProps.ts";
 import { useFocusable } from "@noriginmedia/norigin-spatial-navigation";
+import { IMAGE_HOME_URL } from "@/utils/constants/Links.ts";
 
-export const Card: FC<CardProps> = ({ focusKey }) => {
+export const Card: FC<CardProps> = ({ focusKey, poster, title }) => {
   const { ref, focused } = useFocusable({
     focusKey: focusKey,
   });
   return (
     <>
-      <CardContainer ref={ref} focused={focused}>
-        <CardPoster src="/assets/Example.png" />
+      <CardContainer ref={ref} $focused={focused}>
+        <CardPoster src={`${IMAGE_HOME_URL}${poster}`} />
         <CardTitleWrapper>
-          <CardTitle>After the Rain</CardTitle>
+          <CardTitle>{title}</CardTitle>
         </CardTitleWrapper>
       </CardContainer>
     </>

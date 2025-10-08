@@ -4,4 +4,6 @@ export interface HomeProps {
 
 export interface CardProps {
   focusKey: string;
+  poster: string | null;
+  title: string;
 }

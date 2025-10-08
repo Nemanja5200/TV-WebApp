@@ -15,6 +15,7 @@ export const HomeContainer = styled.div`
 export const RowsContainer = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
+  max-width: 1241px;
   flex-shrink: 1;
   flex-grow: 1;
 `;

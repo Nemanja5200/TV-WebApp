@@ -5,15 +5,16 @@ import {
   DisplayRowWrapper,
   RowHeader,
 } from "@/pages/Home/components/DisplayRow/style/DisplayRow.style.ts";
-import { Card } from "@/pages/Home/components/Card/Card.tsx";
 import {
   FocusContext,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
+import { Card } from "@/pages/Home/components";
 export const DisplayRow: FC<DisplayRowPropsType> = ({
   header,
   focusKey: focusMovie,
   onFocus: CardFocus,
+  data,
 }) => {
   const { ref } = useFocusable({
     focusKey: focusMovie,
@@ -28,10 +29,14 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
         <DisplayRowWrapper ref={ref}>
           <RowHeader>{header}</RowHeader>
           <Cardswrapper>
-            <Card focusKey={focusMovie + "1"} />
-            <Card focusKey={focusMovie + "2"} />
-            <Card focusKey={focusMovie + "3"} />
-            <Card focusKey={focusMovie + "4"} />
+            {data.results.map((movie, index) => (
+              <Card
+                key={movie.id || index}
+                focusKey={focusMovie + index}
+                title={movie.title}
+                poster={movie.poster}
+              />
+            ))}
           </Cardswrapper>
         </DisplayRowWrapper>
       </FocusContext.Provider>

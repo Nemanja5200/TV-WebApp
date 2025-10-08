@@ -14,7 +14,7 @@ export const NavItem: FC<NavItemProps> = ({
   });
 
   return (
-    <NavElement ref={ref} focused={focused}>
+    <NavElement ref={ref} $focused={focused}>
       {label.toUpperCase()}
     </NavElement>
   );
