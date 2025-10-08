@@ -20,7 +20,7 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
   const { ref } = useFocusable({
     focusKey: focusMovie,
     onFocus: CardFocus,
-    saveLastFocusedChild: false,
+    saveLastFocusedChild: true,
     focusable: true,
   });
 
