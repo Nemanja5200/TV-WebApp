@@ -11,15 +11,15 @@ import {
   TVShowsResponse,
 } from "@/types/TMBDTypes.ts";
 
+const isMovieResponse = (
+  response: RawMediaResponse,
+): response is RawMovieResponse => {
+  return response.results.length > 0 && "title" in response.results[0];
+};
+
 export const ParseTMDBResponse = <T extends RawMediaResponse>(
   rawResponse: T,
 ): ParsedMediaResponse => {
-  const isMovieResponse = (
-    response: RawMediaResponse,
-  ): response is RawMovieResponse => {
-    return response.results.length > 0 && "title" in response.results[0];
-  };
-
   if (isMovieResponse(rawResponse)) {
     return {
       page: rawResponse.page,
