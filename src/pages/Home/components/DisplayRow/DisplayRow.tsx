@@ -10,6 +10,7 @@ import {
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
 import { Card } from "@/pages/Home/components";
+import { useScrollOnFocus } from "@/hooks/useScrollOnFocus.tsx";
 export const DisplayRow: FC<DisplayRowPropsType> = ({
   header,
   focusKey: focusMovie,
@@ -23,18 +24,21 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
     focusable: true,
   });
 
+  const { scrollingRefHorizontal, HorizontalScroll } = useScrollOnFocus();
+
   return (
     <>
       <FocusContext.Provider value={focusMovie}>
         <DisplayRowWrapper ref={ref}>
           <RowHeader>{header}</RowHeader>
-          <Cardswrapper>
+          <Cardswrapper ref={scrollingRefHorizontal}>
             {data.results.map((movie, index) => (
               <Card
                 key={movie.id || index}
                 focusKey={focusMovie + index}
                 title={movie.title}
                 poster={movie.poster}
+                onFocus={HorizontalScroll}
               />
             ))}
           </Cardswrapper>

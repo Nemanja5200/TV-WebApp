@@ -8,14 +8,14 @@ import { DisplayRow } from "@/pages/Home/components";
 import { useHome } from "@/pages/Home/hooks/useHome.tsx";
 
 export const Home: FC = () => {
-  const { scrollingRef, VerticalScroll } = useScrollOnFocus();
+  const { scrollingRefVertical, VerticalScroll } = useScrollOnFocus();
   const { nowPlayingMovies, trendingMovies, popularTvShows } = useHome();
 
   return (
     <>
       <HomeContainer>
         <Header focusKey={FOCUSKEY.NAV} onFocus={VerticalScroll} />
-        <RowsContainer ref={scrollingRef}>
+        <RowsContainer ref={scrollingRefVertical}>
           {nowPlayingMovies ? (
             <DisplayRow
               header={ROWNAMES.NOW_PLAYING}

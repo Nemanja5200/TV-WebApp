@@ -9,9 +9,15 @@ import { CardProps } from "@/pages/Home/types/HomeProps.ts";
 import { useFocusable } from "@noriginmedia/norigin-spatial-navigation";
 import { IMAGE_HOME_URL } from "@/utils/constants/Links.ts";
 
-export const Card: FC<CardProps> = ({ focusKey, poster, title }) => {
+export const Card: FC<CardProps> = ({
+  focusKey,
+  poster,
+  title,
+  onFocus: CardFocus,
+}) => {
   const { ref, focused } = useFocusable({
     focusKey: focusKey,
+    onFocus: CardFocus,
   });
   return (
     <>
