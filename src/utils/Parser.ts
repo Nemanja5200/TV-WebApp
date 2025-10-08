@@ -1,28 +1,50 @@
 import {
   Movie,
   MoviesResponse,
+  ParsedMediaResponse,
+  RawMediaResponse,
   RawMovie,
-  RawTMDBResponse,
-} from "@/types/Movies.ts";
+  RawMovieResponse,
+  RawTVResponse,
+  RawTVShow,
+  TVShow,
+  TVShowsResponse,
+} from "@/types/TMBDTypes.ts";
 
-export const ParseMoviesResponse = (
-  rawResponse: RawTMDBResponse,
-): MoviesResponse => {
-  const { page, total_pages, results, total_results } = rawResponse;
+export const ParseTMDBResponse = <T extends RawMediaResponse>(
+  rawResponse: T,
+): ParsedMediaResponse => {
+  const isMovieResponse = (
+    response: RawMediaResponse,
+  ): response is RawMovieResponse => {
+    return response.results.length > 0 && "title" in response.results[0];
+  };
+
+  if (isMovieResponse(rawResponse)) {
+    return {
+      page: rawResponse.page,
+      total_pages: rawResponse.total_pages,
+      total_results: rawResponse.total_results,
+      results: rawResponse.results.map(ParseMovie),
+    } as MoviesResponse;
+  }
 
   return {
-    page,
-    total_pages,
-    total_results,
-    results: results.map((movie) => ParseMovie(movie)),
-  };
+    page: rawResponse.page,
+    total_pages: rawResponse.total_pages,
+    total_results: rawResponse.total_results,
+    results: (rawResponse as RawTVResponse).results.map(ParseTVShow),
+  } as TVShowsResponse;
 };
 
-export const ParseMovie = (rawMovie: RawMovie): Movie => {
-  const { id, title, poster_path } = rawMovie;
-  return {
-    id,
-    title,
-    poster: poster_path,
-  };
-};
+const ParseMovie = (rawMovie: RawMovie): Movie => ({
+  id: rawMovie.id,
+  title: rawMovie.title,
+  poster: rawMovie.poster_path,
+});
+
+const ParseTVShow = (rawTVShow: RawTVShow): TVShow => ({
+  id: rawTVShow.id,
+  title: rawTVShow.name,
+  poster: rawTVShow.poster_path,
+});
