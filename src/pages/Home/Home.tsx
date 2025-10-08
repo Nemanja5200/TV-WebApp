@@ -9,7 +9,7 @@ import { useHome } from "@/pages/Home/hooks/useHome.tsx";
 
 export const Home: FC = () => {
   const { scrollingRef, VerticalScroll } = useScrollOnFocus();
-  const { nowPlayingMovies, popularMovies } = useHome();
+  const { nowPlayingMovies, trendingMovies, popularTvShows } = useHome();
 
   return (
     <>
@@ -25,20 +25,23 @@ export const Home: FC = () => {
             />
           ) : null}
 
-          {popularMovies ? (
+          {trendingMovies ? (
             <DisplayRow
               header={ROWNAMES.TRENDING_MOVIES}
               focusKey={FOCUSKEY.TRENDING_MOVIES}
               onFocus={VerticalScroll}
-              data={popularMovies}
+              data={trendingMovies}
             />
           ) : null}
 
-          {/*<DisplayRow*/}
-          {/*  header={ROWNAMES.SERIES}*/}
-          {/*  focusKey={"Test"}*/}
-          {/*  onFocus={VerticalScroll}*/}
-          {/*/>*/}
+          {popularTvShows ? (
+            <DisplayRow
+              header={ROWNAMES.POPULAR_TVSHOWS}
+              focusKey={FOCUSKEY.POPULAR_TVSHOWS}
+              onFocus={VerticalScroll}
+              data={popularTvShows}
+            />
+          ) : null}
         </RowsContainer>
       </HomeContainer>
     </>

@@ -1,5 +1,5 @@
 export const ROWNAMES = {
   NOW_PLAYING: "Now Playing Movies",
   TRENDING_MOVIES: "Trending Movies",
-  SERIES: "Series",
+  POPULAR_TVSHOWS: "Popular TV Shows",
 };

@@ -10,17 +10,27 @@ import {
 
 export const tmdbService = {
   getNowPlayingMovies: async (page: number = 1): Promise<MoviesResponse> => {
-    const response = await api.get<RawMovieResponse>(TMBD_ROUTE.NOW_PLAYING, {
-      params: { page },
-    });
+    const response = await api.get<RawMovieResponse>(
+      TMBD_ROUTE.NOW_PLAYING_MOVIES,
+      {
+        params: { page },
+      },
+    );
     return ParseTMDBResponse(response.data);
   },
 
   getTrendingMovies: async (
     timeWindow: string = "week",
-  ): Promise<TVShowsResponse> => {
-    const url = `${TMBD_ROUTE.TRENDING}${timeWindow}`;
-    const response = await api.get<RawTVResponse>(url);
+  ): Promise<MoviesResponse> => {
+    const url = `${TMBD_ROUTE.TRENDING_MOVIES}${timeWindow}`;
+    const response = await api.get<RawMovieResponse>(url);
+    return ParseTMDBResponse(response.data);
+  },
+
+  getPopularSeries: async (page: number = 1): Promise<TVShowsResponse> => {
+    const response = await api.get<RawTVResponse>(TMBD_ROUTE.POPULAR_SHOWS, {
+      params: { page },
+    });
     return ParseTMDBResponse(response.data);
   },
 };
