@@ -7,7 +7,7 @@ import { init } from "@noriginmedia/norigin-spatial-navigation";
 init({
   distanceCalculationMethod: "center",
   debug: true,
-  visualDebug: true,
+  visualDebug: false,
   throttle: 130,
   throttleKeypresses: true,
 });
