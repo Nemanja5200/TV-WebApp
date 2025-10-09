@@ -12,6 +12,6 @@ export interface DisplayRowPropsType {
     props: object,
     details: FocusDetails,
   ) => void;
-
   data: MoviesResponse;
+  focusElement: string;
 }

@@ -8,7 +8,6 @@ export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: 32px;
   gap: 80px;
   margin-left: 32px;
 `;

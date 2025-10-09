@@ -6,18 +6,33 @@ import {
   CardTitleWrapper,
 } from "@/pages/Home/components/Card/style/Card.style.ts";
 import { CardProps } from "@/pages/Home/types/HomeProps.ts";
-import { useFocusable } from "@noriginmedia/norigin-spatial-navigation";
+import {
+  setFocus,
+  useFocusable,
+} from "@noriginmedia/norigin-spatial-navigation";
 import { IMAGE_HOME_URL } from "@/utils/constants/Links.ts";
 
 export const Card: FC<CardProps> = ({
-  focusKey,
+  focusKey: cardFocus,
   poster,
   title,
   onFocus: CardFocus,
+  isLastCard,
+  focusElement,
 }) => {
   const { ref, focused } = useFocusable({
-    focusKey: focusKey,
+    focusKey: cardFocus,
     onFocus: CardFocus,
+    onArrowPress: (direction) => {
+      console.log(cardFocus + 19);
+      if (direction === "right" && isLastCard) {
+        {
+          setFocus(focusElement);
+          return false;
+        }
+      }
+      return true;
+    },
   });
   return (
     <>

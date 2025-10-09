@@ -5,20 +5,33 @@ import {
   ChannelsWidgetHeaderContainer,
 } from "@/pages/Home/components/ChannelsWidget/style/ChannelsWidget.style.ts";
 import { ChannelCard } from "@/pages/Home/components/ChannelCard/ChannelCard.tsx";
+import { ChannelWidgetPropsTypes } from "@/pages/Home/components/ChannelsWidget/types/ChannelWidgetTypes.ts";
+import {
+  FocusContext,
+  useFocusable,
+} from "@noriginmedia/norigin-spatial-navigation";
+import { channels } from "@/pages/Home/components/ChannelsWidget/consts/Channels.ts";
 
-export const ChannelsWidget: FC = () => {
+export const ChannelsWidget: FC<ChannelWidgetPropsTypes> = ({
+  focusKey: widgetKey,
+}) => {
+  const { ref } = useFocusable({
+    focusKey: widgetKey,
+    saveLastFocusedChild: false,
+    isFocusBoundary: false,
+  });
   return (
     <>
-      <ChannelsWidgetContainer>
-        <ChannelsWidgetHeaderContainer>
-          <ChannelsWidgetHeader>Top 5 Channels</ChannelsWidgetHeader>
-        </ChannelsWidgetHeaderContainer>
-        <ChannelCard />
-        <ChannelCard />
-        <ChannelCard />
-        <ChannelCard />
-        <ChannelCard />
-      </ChannelsWidgetContainer>
+      <FocusContext.Provider value={widgetKey}>
+        <ChannelsWidgetContainer ref={ref}>
+          <ChannelsWidgetHeaderContainer>
+            <ChannelsWidgetHeader>Top 5 Channels</ChannelsWidgetHeader>
+          </ChannelsWidgetHeaderContainer>
+          {channels.map((channelName) => (
+            <ChannelCard key={channelName} focusKey={channelName} />
+          ))}
+        </ChannelsWidgetContainer>
+      </FocusContext.Provider>
     </>
   );
 };

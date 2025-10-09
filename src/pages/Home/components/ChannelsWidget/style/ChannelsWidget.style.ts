@@ -6,8 +6,8 @@ export const ChannelsWidgetContainer = styled.div`
   border-radius: 16px;
   padding: 24px 16px 24px 16px;
   gap: 16px;
+  margin-top: 32px;
   background-color: #000000;
-  margin-top: 122px;
   font-family: Inter, sans-serif;
   display: flex;
   flex-direction: column;

@@ -11,4 +11,5 @@ export const ContentWrapper = styled.div<ContentWrapperProps>`
   background-image: url(${(props) => props.$backgroundIMG});
   background-size: cover;
   background-position: center;
+  padding-top: 32px;
 `;

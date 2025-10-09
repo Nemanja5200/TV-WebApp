@@ -1,0 +1,15 @@
+export const channels = [
+  "CHANNEL1",
+  "CHANNEL2",
+  "CHANNEL3",
+  "CHANNEL4",
+  "CHANNEL5",
+];
+
+export const CHANNELS = {
+  CHANNEL1: "CHANNEL1",
+  CHANNEL2: "CHANNEL2",
+  CHANNEL3: "CHANNEL3",
+  CHANNEL4: "CHANNEL4",
+  CHANNEL5: "CHANNEL5",
+};

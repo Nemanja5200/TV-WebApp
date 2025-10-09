@@ -14,13 +14,9 @@ import {
 import { NavItem } from "@/components/Header/components/NavItem.tsx";
 import { HeaderProps } from "@/components/Header/type/HeaderProps.ts";
 
-export const Header: FC<HeaderProps> = ({
-  focusKey: focusNav,
-  onFocus: headerFocus,
-}) => {
+export const Header: FC<HeaderProps> = ({ focusKey: focusNav }) => {
   const { ref } = useFocusable({
     focusKey: focusNav,
-    onFocus: headerFocus,
     saveLastFocusedChild: false,
     trackChildren: false,
   });
@@ -35,12 +31,7 @@ export const Header: FC<HeaderProps> = ({
           <HeaderLogo src={IMAGE_PATHS.LOGO} />
           <NavMenuContainer ref={ref}>
             {Object.entries(NAVBAR).map(([key, label]) => (
-              <NavItem
-                key={key}
-                navKey={key}
-                label={label}
-                onFocus={headerFocus}
-              />
+              <NavItem key={key} navKey={key} label={label} />
             ))}
           </NavMenuContainer>
         </HeaderWrapper>

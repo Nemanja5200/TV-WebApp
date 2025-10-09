@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useRef } from "react";
 import { DisplayRowPropsType } from "@/pages/Home/components/DisplayRow/types/DisplayRowProps.ts";
 import {
   Cardswrapper,
@@ -16,16 +16,17 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
   focusKey: focusMovie,
   onFocus: CardFocus,
   data,
+  focusElement,
 }) => {
   const { ref } = useFocusable({
     focusKey: focusMovie,
     onFocus: CardFocus,
     saveLastFocusedChild: true,
     focusable: true,
+    trackChildren: true,
   });
 
   const { scrollingRefHorizontal, HorizontalScroll } = useScrollOnFocus();
-
   return (
     <>
       <FocusContext.Provider value={focusMovie}>
@@ -38,7 +39,11 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
                 focusKey={focusMovie + index}
                 title={movie.title}
                 poster={movie.poster}
-                onFocus={HorizontalScroll}
+                onFocus={(focusDetails) => {
+                  HorizontalScroll(focusDetails);
+                }}
+                focusElement={focusElement}
+                isLastCard={index === data.results.length - 1}
               />
             ))}
           </Cardswrapper>

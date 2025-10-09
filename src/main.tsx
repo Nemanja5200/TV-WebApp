@@ -8,7 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 init({
   distanceCalculationMethod: "center",
   debug: true,
-  visualDebug: false,
+  visualDebug: true,
   throttle: 130,
   throttleKeypresses: true,
 });

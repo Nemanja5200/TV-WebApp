@@ -1,14 +1,16 @@
 import "./App.css";
 import { GlobalStyles } from "@/style/GlobalStyle.ts";
-import { Layout } from "@/components";
+import { Header, Layout } from "@/components";
 import { Home } from "@/pages/Home";
+import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Layout>
-        <Home />
+        <Header focusKey={FOCUSKEY.NAV} />
+        <Home focusKey={FOCUSKEY.HOME_ELEMENTS} />
       </Layout>
     </>
   );

@@ -16,4 +16,6 @@ export interface CardProps {
     props: object,
     details: FocusDetails,
   ) => void;
+  focusElement: string;
+  isLastCard: boolean;
 }
