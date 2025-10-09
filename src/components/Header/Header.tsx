@@ -22,12 +22,12 @@ export const Header: FC<HeaderProps> = ({
     focusKey: focusNav,
     onFocus: headerFocus,
     saveLastFocusedChild: false,
+    trackChildren: false,
   });
 
   useEffect(() => {
     setFocus(NAVBAR.HOME.toUpperCase());
   }, []);
-
   return (
     <>
       <FocusContext.Provider value={focusNav}>
