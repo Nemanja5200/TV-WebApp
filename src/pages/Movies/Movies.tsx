@@ -3,6 +3,10 @@ import { MoviesPropsType } from "@/pages/Movies/types/MoviesTypes.ts";
 import { useFocusable } from "@noriginmedia/norigin-spatial-navigation";
 import { useBackgroundContext } from "@/context/BackgroundContext.tsx";
 import {
+  DescripiontHeaderContaienr,
+  DescriptionContainer,
+  DescriptionHeaderContainer,
+  DescriptionTextContainer,
   MovieHeroContainer,
   MovieHeroGradient,
   MovieHeroImg,
@@ -30,6 +34,16 @@ export const Movies: FC<MoviesPropsType> = ({ focusKey: moviesKey }) => {
           <MovieHeroSolid />
           <MovieHeroGradient />
         </MovieHeroContainer>
+        <DescriptionContainer>
+          <DescriptionHeaderContainer>
+            Empire Of The Sun
+          </DescriptionHeaderContainer>
+          <DescriptionTextContainer>
+            Boolean union variant background text vertical rectangle background
+            horizontal. Boolean union variant background text vertical rectangle
+            background horizontal. Pen export mask font image ellipse
+          </DescriptionTextContainer>
+        </DescriptionContainer>
       </MoviesPageWrapper>
     </>
   );
