@@ -1,4 +1,4 @@
 export const NAVBAR = {
-  HOME: "Home",
-  MOVIES: "Movie",
+  HOME: "HOME",
+  MOVIES: "MOVIES",
 };
