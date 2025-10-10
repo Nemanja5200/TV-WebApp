@@ -10,6 +10,8 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   gap: 80px;
   margin-left: 32px;
+  z-index: 10;
+  position: relative;
 `;
 
 export const HeaderLogo = styled.img`

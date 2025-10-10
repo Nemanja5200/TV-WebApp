@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { HomeContentWrapper } from "@/pages/Home/style/Home.style.ts";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 import { CardsDisplay, ChannelsWidget } from "@/pages/Home/components";
@@ -7,8 +7,15 @@ import {
   FocusContext,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
+import { useBackgroundContext } from "@/context/BackgroundContext.tsx";
+import { IMAGE_PATHS } from "@/constants/imagePaths.ts";
 
 export const Home: FC<HomeProps> = ({ focusKey: homeKey }) => {
+  const { setBackgroundImg } = useBackgroundContext();
+  useEffect(() => {
+    setBackgroundImg(IMAGE_PATHS.TV_BACKGROUND);
+  }, [setBackgroundImg]);
+
   const { ref } = useFocusable({
     focusKey: homeKey,
     saveLastFocusedChild: false,

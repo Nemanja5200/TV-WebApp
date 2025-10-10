@@ -21,7 +21,7 @@ export const Header: FC<HeaderProps> = ({ focusKey: focusNav }) => {
     trackChildren: false,
   });
   useEffect(() => {
-    setFocus(NAVBAR.HOME.toUpperCase());
+    setFocus(NAVBAR.HOME);
   }, []);
   return (
     <>
