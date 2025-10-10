@@ -1,4 +1,4 @@
-import { FC, useRef } from "react";
+import { FC } from "react";
 import { DisplayRowPropsType } from "@/pages/Home/components/DisplayRow/types/DisplayRowProps.ts";
 import {
   Cardswrapper,
@@ -24,6 +24,7 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
     saveLastFocusedChild: true,
     focusable: true,
     trackChildren: true,
+    isFocusBoundary: false,
   });
 
   const { scrollingRefHorizontal, HorizontalScroll } = useScrollOnFocus();

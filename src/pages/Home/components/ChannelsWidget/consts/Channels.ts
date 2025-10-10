@@ -1,3 +1,5 @@
+import { FOCUSKEY } from "@/constants/FocusKeys.ts";
+
 export const channels = [
   "CHANNEL1",
   "CHANNEL2",
@@ -12,4 +14,12 @@ export const CHANNELS = {
   CHANNEL3: "CHANNEL3",
   CHANNEL4: "CHANNEL4",
   CHANNEL5: "CHANNEL5",
+};
+
+export const channelToRowMap: Record<string, string> = {
+  [CHANNELS.CHANNEL1]: FOCUSKEY.NOW_PLAYING,
+  [CHANNELS.CHANNEL2]: FOCUSKEY.NOW_PLAYING,
+  [CHANNELS.CHANNEL3]: FOCUSKEY.TRENDING_MOVIES,
+  [CHANNELS.CHANNEL4]: FOCUSKEY.POPULAR_TVSHOWS,
+  [CHANNELS.CHANNEL5]: FOCUSKEY.POPULAR_TVSHOWS,
 };

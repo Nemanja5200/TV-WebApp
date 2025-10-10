@@ -10,7 +10,10 @@ import {
   FocusContext,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
-import { channels } from "@/pages/Home/components/ChannelsWidget/consts/Channels.ts";
+import {
+  channels,
+  channelToRowMap,
+} from "@/pages/Home/components/ChannelsWidget/consts/Channels.ts";
 
 export const ChannelsWidget: FC<ChannelWidgetPropsTypes> = ({
   focusKey: widgetKey,
@@ -28,7 +31,11 @@ export const ChannelsWidget: FC<ChannelWidgetPropsTypes> = ({
             <ChannelsWidgetHeader>Top 5 Channels</ChannelsWidgetHeader>
           </ChannelsWidgetHeaderContainer>
           {channels.map((channelName) => (
-            <ChannelCard key={channelName} focusKey={channelName} />
+            <ChannelCard
+              key={channelName}
+              focusKey={channelName}
+              onLeftFocusElement={channelToRowMap[channelName]}
+            />
           ))}
         </ChannelsWidgetContainer>
       </FocusContext.Provider>
