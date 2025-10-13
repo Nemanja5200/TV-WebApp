@@ -1,6 +1,6 @@
 import { FC, useEffect } from "react";
 import { MoviesPropsType } from "@/pages/Movies/types/MoviesTypes.ts";
-import { useFocusable } from "@noriginmedia/norigin-spatial-navigation";
+import {FocusContext, useFocusable} from "@noriginmedia/norigin-spatial-navigation";
 import { useBackgroundContext } from "@/context/BackgroundContext.tsx";
 import {
   DescriptionContainer,
@@ -29,12 +29,13 @@ export const Movies: FC<MoviesPropsType> = ({ focusKey: moviesKey }) => {
   const { upcomingMovies } = useData();
   const { scrollingRefHorizontal, HorizontalScroll } = useScrollOnFocus();
 
-  useFocusable({
+  const{ref} = useFocusable({
     focusKey: moviesKey,
   });
   return (
     <>
-      <MoviesPageWrapper>
+      <FocusContext.Provider value={moviesKey}>
+      <MoviesPageWrapper ref={ref}>
         <MovieHeroContainer>
           <MovieHeroImg src={IMAGE_PATHS.TEST} />
           <MovieHeroSolid />
@@ -61,6 +62,7 @@ export const Movies: FC<MoviesPropsType> = ({ focusKey: moviesKey }) => {
           ) : null}
         </MoviesCardsWrapper>
       </MoviesPageWrapper>
+      </FocusContext.Provider>
     </>
   );
 };
