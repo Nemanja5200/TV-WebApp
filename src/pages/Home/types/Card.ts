@@ -1,1 +1,1 @@
-export type CardVariant = 'horizontal' | 'vertical';
+export type CardVariant = "horizontal" | "vertical";

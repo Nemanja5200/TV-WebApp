@@ -4,8 +4,14 @@ import {
   setFocus,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
-import { IMAGE_HOME_URL } from "@/utils/constants/Links.ts";
-import {CardContainer, CardPoster, CardTitle, CardTitleWrapper} from "@/components/Card/style/Card.style.ts";
+import { IMAGE_HOME_URL, IMAGE_MOVIES_URL } from "@/utils/constants/Links.ts";
+import {
+  CardContainer,
+  CardPoster,
+  CardTitle,
+  CardTitleWrapper,
+} from "@/components/Card/style/Card.style.ts";
+import { CARDTYPE } from "@/components/Card/consts/CARDTYPE.ts";
 
 export const Card: FC<CardProps> = ({
   focusKey: cardFocus,
@@ -14,6 +20,7 @@ export const Card: FC<CardProps> = ({
   onFocus: CardFocus,
   isLastCard,
   focusElement,
+  cardType,
 }) => {
   const { ref, focused } = useFocusable({
     focusKey: cardFocus,
@@ -30,8 +37,12 @@ export const Card: FC<CardProps> = ({
   });
   return (
     <>
-      <CardContainer ref={ref} $focused={focused}>
-        <CardPoster src={`${IMAGE_HOME_URL}${poster}`} />
+      <CardContainer ref={ref} $focused={focused} $variant={cardType}>
+        <CardPoster
+          src={`${
+            cardType === CARDTYPE.VERTICAL ? IMAGE_HOME_URL : IMAGE_MOVIES_URL
+          }${poster}`}
+        />
         <CardTitleWrapper>
           <CardTitle>{title}</CardTitle>
         </CardTitleWrapper>

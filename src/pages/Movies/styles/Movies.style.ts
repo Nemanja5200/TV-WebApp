@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { RowHContainer } from "@/components/DisplayRow/style/DisplayRow.style.ts";
 
 export const MoviesPageWrapper = styled.div`
   width: 100%;
@@ -89,4 +90,13 @@ export const DescriptionTextContainer = styled.div`
   font-weight: 400;
   font-size: 1.375rem;
   line-height: 31px;
+`;
+
+export const MoviesCardsWrapper = styled(RowHContainer)`
+  position: absolute;
+  opacity: 1;
+  width: 100%;
+  top: 697px;
+  left: 64px;
+  gap: 24px;
 `;

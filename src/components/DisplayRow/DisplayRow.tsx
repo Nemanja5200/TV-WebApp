@@ -7,17 +7,17 @@ import { useScrollOnFocus } from "@/hooks/useScrollOnFocus.tsx";
 import {
   Cardswrapper,
   DisplayRowWrapper,
-  RowHeader
+  RowHeader,
 } from "@/components/DisplayRow/style/DisplayRow.style.ts";
-import {DisplayRowPropsType} from "@/components/DisplayRow/types/DisplayRowProps.ts";
-import {Card} from "@/components";
+import { DisplayRowPropsType } from "@/components/DisplayRow/types/DisplayRowProps.ts";
+import { Card } from "@/components";
 export const DisplayRow: FC<DisplayRowPropsType> = ({
   header,
   focusKey: focusMovie,
   onFocus: CardFocus,
   data,
   focusElement,
-    cardType,
+  cardType,
 }) => {
   const { ref } = useFocusable({
     focusKey: focusMovie,
@@ -33,10 +33,8 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
     <>
       <FocusContext.Provider value={focusMovie}>
         <DisplayRowWrapper ref={ref}>
-          {header? (
-              <RowHeader>{header}</RowHeader>
-          ):null}
-          <Cardswrapper ref={scrollingRefHorizontal} >
+          {header ? <RowHeader>{header}</RowHeader> : null}
+          <Cardswrapper ref={scrollingRefHorizontal}>
             {data.results.map((movie, index) => (
               <Card
                 key={movie.id || index}

@@ -1,6 +1,6 @@
-import  { createContext, useState, useContext, ReactNode } from "react";
+import { createContext, useState, useContext, ReactNode } from "react";
 import { IMAGE_PATHS } from "@/constants/imagePaths.ts";
-import {BackgroundContextType} from "@/context/type/BackgroundType.tsx";
+import { BackgroundContextType } from "@/context/type/BackgroundType.tsx";
 
 const BackgroundContext = createContext<BackgroundContextType | undefined>(
   undefined,

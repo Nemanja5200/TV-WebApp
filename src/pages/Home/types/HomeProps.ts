@@ -2,7 +2,7 @@ import {
   FocusableComponentLayout,
   FocusDetails,
 } from "@noriginmedia/norigin-spatial-navigation";
-import {CardVariant} from "@/pages/Home/types/Card.ts";
+import { CardVariant } from "@/pages/Home/types/Card.ts";
 
 export interface HomeProps {
   focusKey: string;
@@ -19,5 +19,5 @@ export interface CardProps {
   ) => void;
   focusElement?: string;
   isLastCard: boolean;
-  cardType:CardVariant,
+  cardType: CardVariant;
 }

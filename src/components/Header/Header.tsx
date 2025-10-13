@@ -17,7 +17,7 @@ import { HeaderProps } from "@/components/Header/type/HeaderProps.ts";
 export const Header: FC<HeaderProps> = ({ focusKey: focusNav }) => {
   const { ref } = useFocusable({
     focusKey: focusNav,
-    saveLastFocusedChild: false,
+    saveLastFocusedChild: true,
     trackChildren: false,
   });
   useEffect(() => {

@@ -1,4 +1,4 @@
-export const CARDTYPE ={
-    VERTICAL: "vertical",
-    HORIZONTAL: "horizontal"
-}as const
+export const CARDTYPE = {
+  VERTICAL: "vertical",
+  HORIZONTAL: "horizontal",
+} as const;

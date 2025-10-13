@@ -33,13 +33,13 @@ export const tmdbService = {
     });
     return ParseTMDBResponse(response.data);
   },
-  getUpcomingMovies : async (page: number = 1): Promise<MoviesResponse> => {
-  const response = await api.get<RawMovieResponse>(
+  getUpcomingMovies: async (page: number = 1): Promise<MoviesResponse> => {
+    const response = await api.get<RawMovieResponse>(
       TMBD_ROUTE.UPCOMING_MOVIES,
       {
         params: { page },
       },
-  );
-  return ParseTMDBResponse(response.data);
-},
+    );
+    return ParseTMDBResponse(response.data);
+  },
 };

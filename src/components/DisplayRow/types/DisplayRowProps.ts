@@ -3,7 +3,7 @@ import {
   FocusDetails,
 } from "@noriginmedia/norigin-spatial-navigation";
 import { MoviesResponse } from "@/types/TMBDTypes.ts";
-import {CardVariant} from "@/pages/Home/types/Card.ts";
+import { CardVariant } from "@/pages/Home/types/Card.ts";
 
 export interface DisplayRowPropsType {
   header?: string;
