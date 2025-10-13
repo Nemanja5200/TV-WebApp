@@ -12,7 +12,7 @@ import {
   CardTitleWrapper,
 } from "@/components/Card/style/Card.style.ts";
 import { CARDTYPE } from "@/components/Card/consts/CARDTYPE.ts";
-import {FOCUSKEY} from "@/constants/FocusKeys.ts";
+import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 
 export const Card: FC<CardProps> = ({
   focusKey: cardFocus,
@@ -27,7 +27,11 @@ export const Card: FC<CardProps> = ({
     focusKey: cardFocus,
     onFocus: CardFocus,
     onArrowPress: (direction) => {
-      if (direction === "right" && isLastCard && cardFocus.includes(FOCUSKEY.HOME_ELEMENTS)) {
+      if (
+        direction === "right" &&
+        isLastCard &&
+        cardFocus.includes(FOCUSKEY.HOME_ELEMENTS)
+      ) {
         {
           setFocus(focusElement as string);
           return false;

@@ -10,7 +10,7 @@ import {
   RowHeader,
 } from "@/components/DisplayRow/style/DisplayRow.style.ts";
 import { DisplayRowPropsType } from "@/components/DisplayRow/types/DisplayRowProps.ts";
-import {Card} from "@/components";
+import { Card } from "@/components";
 export const DisplayRow: FC<DisplayRowPropsType> = ({
   header,
   focusKey: focusMovie,
