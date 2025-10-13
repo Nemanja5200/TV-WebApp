@@ -5,5 +5,5 @@ export const HomeContentWrapper = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 110px;
-  height: 100%;
+  height: 94%;
 `;

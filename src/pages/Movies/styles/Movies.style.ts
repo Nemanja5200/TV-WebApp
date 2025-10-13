@@ -95,7 +95,7 @@ export const DescriptionTextContainer = styled.div`
 export const MoviesCardsWrapper = styled(RowHContainer)`
   position: absolute;
   opacity: 1;
-  width: 100%;
+  width: 96.5%;
   top: 697px;
   left: 64px;
   gap: 24px;
