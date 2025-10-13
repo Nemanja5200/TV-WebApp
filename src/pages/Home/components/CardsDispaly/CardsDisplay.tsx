@@ -1,15 +1,15 @@
 import { FC } from "react";
-import { DisplayRow } from "@/pages/Home/components";
 import { ROWNAMES } from "@/pages/Home/types/DisplayRowNames.ts";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 import { useScrollOnFocus } from "@/hooks/useScrollOnFocus.tsx";
 import { useHome } from "@/pages/Home/hooks/useHome.tsx";
 import {
   CardsContainer,
-  RowsContainer,
 } from "@/pages/Home/components/CardsDispaly/style/CardsDisplay.style.tsx";
 import { CardsDisplayPropsTypes } from "@/pages/Home/components/CardsDispaly/types/CardsDisplayTypes.ts";
 import { CHANNELS } from "@/pages/Home/components/ChannelsWidget/consts/Channels.ts";
+import {CARDTYPE} from "@/components/Card/consts/CARDTYPE.ts";
+import {DisplayRow} from "@/components";
 
 export const CardsDisplay: FC<CardsDisplayPropsTypes> = () => {
   const { scrollingRefVertical, VerticalScroll } = useScrollOnFocus();
@@ -17,8 +17,7 @@ export const CardsDisplay: FC<CardsDisplayPropsTypes> = () => {
 
   return (
     <>
-      <CardsContainer>
-        <RowsContainer ref={scrollingRefVertical}>
+      <CardsContainer ref={scrollingRefVertical}>
           {nowPlayingMovies ? (
             <DisplayRow
               header={ROWNAMES.NOW_PLAYING}
@@ -26,6 +25,7 @@ export const CardsDisplay: FC<CardsDisplayPropsTypes> = () => {
               onFocus={VerticalScroll}
               data={nowPlayingMovies}
               focusElement={CHANNELS.CHANNEL1}
+              cardType={CARDTYPE.VERTICAL}
             />
           ) : null}
 
@@ -36,6 +36,7 @@ export const CardsDisplay: FC<CardsDisplayPropsTypes> = () => {
               onFocus={VerticalScroll}
               data={trendingMovies}
               focusElement={CHANNELS.CHANNEL3}
+              cardType={CARDTYPE.VERTICAL}
             />
           ) : null}
 
@@ -46,9 +47,9 @@ export const CardsDisplay: FC<CardsDisplayPropsTypes> = () => {
               onFocus={VerticalScroll}
               data={popularTvShows}
               focusElement={CHANNELS.CHANNEL5}
+              cardType={CARDTYPE.VERTICAL}
             />
           ) : null}
-        </RowsContainer>
       </CardsContainer>
     </>
   );

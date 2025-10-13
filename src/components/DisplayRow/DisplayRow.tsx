@@ -4,16 +4,20 @@ import {
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
 import { useScrollOnFocus } from "@/hooks/useScrollOnFocus.tsx";
-import {Cardswrapper, DisplayRowWrapper, RowHeader} from "@/components/DisplayRow/style/DisplayRow.style.ts";
+import {
+  Cardswrapper,
+  DisplayRowWrapper,
+  RowHeader
+} from "@/components/DisplayRow/style/DisplayRow.style.ts";
 import {DisplayRowPropsType} from "@/components/DisplayRow/types/DisplayRowProps.ts";
-import {Card} from "@/pages/Home/components";
+import {Card} from "@/components";
 export const DisplayRow: FC<DisplayRowPropsType> = ({
   header,
   focusKey: focusMovie,
   onFocus: CardFocus,
   data,
   focusElement,
-    cardType
+    cardType,
 }) => {
   const { ref } = useFocusable({
     focusKey: focusMovie,
@@ -32,7 +36,7 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
           {header? (
               <RowHeader>{header}</RowHeader>
           ):null}
-          <Cardswrapper ref={scrollingRefHorizontal}>
+          <Cardswrapper ref={scrollingRefHorizontal} >
             {data.results.map((movie, index) => (
               <Card
                 key={movie.id || index}
@@ -44,6 +48,7 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
                 }}
                 focusElement={focusElement}
                 isLastCard={index === data.results.length - 1}
+                cardType={cardType}
               />
             ))}
           </Cardswrapper>

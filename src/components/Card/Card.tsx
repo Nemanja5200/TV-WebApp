@@ -1,16 +1,11 @@
 import { FC } from "react";
-import {
-  CardContainer,
-  CardPoster,
-  CardTitle,
-  CardTitleWrapper,
-} from "@/pages/Home/components/Card/style/Card.style.ts";
 import { CardProps } from "@/pages/Home/types/HomeProps.ts";
 import {
   setFocus,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
 import { IMAGE_HOME_URL } from "@/utils/constants/Links.ts";
+import {CardContainer, CardPoster, CardTitle, CardTitleWrapper} from "@/components/Card/style/Card.style.ts";
 
 export const Card: FC<CardProps> = ({
   focusKey: cardFocus,
