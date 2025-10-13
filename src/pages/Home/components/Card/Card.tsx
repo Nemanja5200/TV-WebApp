@@ -26,7 +26,7 @@ export const Card: FC<CardProps> = ({
     onArrowPress: (direction) => {
       if (direction === "right" && isLastCard) {
         {
-          setFocus(focusElement);
+          setFocus(focusElement as string);
           return false;
         }
       }

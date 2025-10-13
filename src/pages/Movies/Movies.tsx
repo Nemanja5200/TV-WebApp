@@ -3,7 +3,6 @@ import { MoviesPropsType } from "@/pages/Movies/types/MoviesTypes.ts";
 import { useFocusable } from "@noriginmedia/norigin-spatial-navigation";
 import { useBackgroundContext } from "@/context/BackgroundContext.tsx";
 import {
-  DescripiontHeaderContaienr,
   DescriptionContainer,
   DescriptionHeaderContainer,
   DescriptionTextContainer,

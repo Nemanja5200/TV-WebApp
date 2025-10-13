@@ -2,20 +2,18 @@ import {
   FocusableComponentLayout,
   FocusDetails,
 } from "@noriginmedia/norigin-spatial-navigation";
+import { MoviesResponse } from "@/types/TMBDTypes.ts";
+import {CardVariant} from "@/pages/Home/types/Card.ts";
 
-export interface HomeProps {
+export interface DisplayRowPropsType {
+  header?: string;
   focusKey: string;
-}
-
-export interface CardProps {
-  focusKey: string;
-  poster: string | null;
-  title: string;
   onFocus: (
     layout: FocusableComponentLayout,
     props: object,
     details: FocusDetails,
   ) => void;
+  data: MoviesResponse;
   focusElement?: string;
-  isLastCard: boolean;
+  cardType: CardVariant;
 }
