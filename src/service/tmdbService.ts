@@ -2,7 +2,9 @@ import { api } from "@/api/api.ts";
 import { ParseTMDBResponse } from "@/utils/Parser.ts";
 import { TMBD_ROUTE } from "@/utils/constants/TMBD.ts";
 import {
+  DetailsResponse,
   MoviesResponse,
+  RawDetailsResponse,
   RawMovieResponse,
   RawTVResponse,
   TVShowsResponse,
@@ -16,7 +18,7 @@ export const tmdbService = {
         params: { page },
       },
     );
-    return ParseTMDBResponse(response.data);
+    return ParseTMDBResponse(response.data) as MoviesResponse;
   },
 
   getTrendingMovies: async (
@@ -24,14 +26,14 @@ export const tmdbService = {
   ): Promise<MoviesResponse> => {
     const url = `${TMBD_ROUTE.TRENDING_MOVIES}${timeWindow}`;
     const response = await api.get<RawMovieResponse>(url);
-    return ParseTMDBResponse(response.data);
+    return ParseTMDBResponse(response.data) as MoviesResponse;
   },
 
   getPopularSeries: async (page: number = 1): Promise<TVShowsResponse> => {
     const response = await api.get<RawTVResponse>(TMBD_ROUTE.POPULAR_SHOWS, {
       params: { page },
     });
-    return ParseTMDBResponse(response.data);
+    return ParseTMDBResponse(response.data) as TVShowsResponse;
   },
   getUpcomingMovies: async (page: number = 1): Promise<MoviesResponse> => {
     const response = await api.get<RawMovieResponse>(
@@ -40,6 +42,13 @@ export const tmdbService = {
         params: { page },
       },
     );
-    return ParseTMDBResponse(response.data);
+    return ParseTMDBResponse(response.data) as MoviesResponse;
+  },
+
+  getDetails: async (id: number): Promise<DetailsResponse> => {
+    const response = await api.get<RawDetailsResponse>(
+      TMBD_ROUTE.DETAILS + id.toString(),
+    );
+    return ParseTMDBResponse(response.data) as DetailsResponse;
   },
 };
