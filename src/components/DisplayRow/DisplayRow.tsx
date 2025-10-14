@@ -35,7 +35,7 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
       <FocusContext.Provider value={focusMovie}>
         <DisplayRowWrapper ref={ref}>
           {header ? <RowHeader>{header}</RowHeader> : null}
-          <Cardswrapper ref={scrollingRefHorizontal}>
+          <Cardswrapper ref={scrollingRefHorizontal} $vertical={cardType}>
             {data.results.map((movie, index) => (
               <Card
                 id={movie.id}

@@ -32,7 +32,10 @@ export const RowHContainer = styled.div`
   flex-grow: 1;
 `;
 
-export const Cardswrapper = styled(RowHContainer)`
+export const Cardswrapper = styled(RowHContainer)<{ $vertical?: string }>`
+  --container-pagination: ${({ $vertical }) =>
+    $vertical === "vertical" ? "0px" : "110px"};
+
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -41,4 +44,5 @@ export const Cardswrapper = styled(RowHContainer)`
   width: 100%;
   height: 100%;
   white-space: nowrap;
+  padding-right: var(--container-pagination);
 `;
