@@ -9,15 +9,17 @@ export interface HomeProps {
 }
 
 export interface CardProps {
+  id: number;
   focusKey: string;
   poster: string | null;
   title: string;
   onFocus: (
     layout: FocusableComponentLayout,
-    props: object,
+    props: unknown,
     details: FocusDetails,
   ) => void;
   focusElement?: string;
   isLastCard: boolean;
   cardType: CardVariant;
+  onCardFocus?: (id: number) => void;
 }

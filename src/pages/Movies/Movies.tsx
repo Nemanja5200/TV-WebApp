@@ -16,12 +16,12 @@ import {
   MoviesCardsWrapper,
   MoviesPageWrapper,
 } from "@/pages/Movies/styles/Movies.style.ts";
-import { IMAGE_PATHS } from "@/constants/imagePaths.ts";
-import { useData } from "@/hooks/useData.tsx";
 import { DisplayRow } from "@/components";
 import { CARDTYPE } from "@/components/Card/consts/CARDTYPE.ts";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 import { useScrollOnFocus } from "@/hooks/useScrollOnFocus.tsx";
+import { useMovies } from "@/pages/Movies/hooks/useMovies.tsx";
+import { IMAGE_POSTER_URL } from "@/utils/constants/Links.ts";
 
 export const Movies: FC<MoviesPropsType> = ({ focusKey: moviesKey }) => {
   const { setBackgroundColor, setBackgroundImg } = useBackgroundContext();
@@ -29,7 +29,7 @@ export const Movies: FC<MoviesPropsType> = ({ focusKey: moviesKey }) => {
     setBackgroundColor("#151515");
     setBackgroundImg(undefined);
   }, [setBackgroundColor, setBackgroundImg]);
-  const { upcomingMovies } = useData();
+  const { upcomingMovies, details, movieInfo, setFocusedId } = useMovies();
   const { scrollingRefHorizontal, HorizontalScroll } = useScrollOnFocus();
 
   const { ref } = useFocusable({
@@ -40,19 +40,16 @@ export const Movies: FC<MoviesPropsType> = ({ focusKey: moviesKey }) => {
       <FocusContext.Provider value={moviesKey}>
         <MoviesPageWrapper ref={ref}>
           <MovieHeroContainer>
-            <MovieHeroImg src={IMAGE_PATHS.TEST} />
+            <MovieHeroImg src={IMAGE_POSTER_URL + details?.heroPoster} />
             <MovieHeroSolid />
             <MovieHeroGradient />
           </MovieHeroContainer>
           <DescriptionContainer>
             <DescriptionHeaderContainer>
-              Empire Of The Sun
+              {movieInfo?.title}
             </DescriptionHeaderContainer>
             <DescriptionTextContainer>
-              Boolean union variant background text vertical rectangle
-              background horizontal. Boolean union variant background text
-              vertical rectangle background horizontal. Pen export mask font
-              image ellipse
+              {movieInfo?.overview}
             </DescriptionTextContainer>
           </DescriptionContainer>
           <MoviesCardsWrapper ref={scrollingRefHorizontal}>
@@ -62,6 +59,7 @@ export const Movies: FC<MoviesPropsType> = ({ focusKey: moviesKey }) => {
                 data={upcomingMovies}
                 focusKey={FOCUSKEY.UPCOMING}
                 onFocus={HorizontalScroll}
+                onCardFocus={(movieId) => setFocusedId(movieId)}
               />
             ) : null}
           </MoviesCardsWrapper>

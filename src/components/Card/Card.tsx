@@ -13,7 +13,6 @@ import {
 } from "@/components/Card/style/Card.style.ts";
 import { CARDTYPE } from "@/components/Card/consts/CARDTYPE.ts";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
-
 export const Card: FC<CardProps> = ({
   focusKey: cardFocus,
   poster,
@@ -22,10 +21,17 @@ export const Card: FC<CardProps> = ({
   isLastCard,
   focusElement,
   cardType,
+  onCardFocus,
+  id,
 }) => {
   const { ref, focused } = useFocusable({
     focusKey: cardFocus,
-    onFocus: CardFocus,
+    onFocus: (layout, props, details) => {
+      if (onCardFocus) {
+        onCardFocus(id);
+      }
+      CardFocus(layout, props, details);
+    },
     onArrowPress: (direction) => {
       if (
         direction === "right" &&

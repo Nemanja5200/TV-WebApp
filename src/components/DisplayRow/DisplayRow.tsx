@@ -18,6 +18,7 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
   data,
   focusElement,
   cardType,
+  onCardFocus,
 }) => {
   const { ref } = useFocusable({
     focusKey: focusMovie,
@@ -37,6 +38,7 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
           <Cardswrapper ref={scrollingRefHorizontal}>
             {data.results.map((movie, index) => (
               <Card
+                id={movie.id}
                 key={movie.id || index}
                 focusKey={focusMovie + index}
                 title={movie.title}
@@ -47,6 +49,7 @@ export const DisplayRow: FC<DisplayRowPropsType> = ({
                 focusElement={focusElement}
                 isLastCard={index === data.results.length - 1}
                 cardType={cardType}
+                onCardFocus={onCardFocus}
               />
             ))}
           </Cardswrapper>

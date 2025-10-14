@@ -16,4 +16,5 @@ export interface DisplayRowPropsType {
   data: MoviesResponse;
   focusElement?: string;
   cardType: CardVariant;
+  onCardFocus?: (id: number) => void;
 }
