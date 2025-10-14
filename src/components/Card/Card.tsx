@@ -36,7 +36,7 @@ export const Card: FC<CardProps> = ({
       if (
         direction === "right" &&
         isLastCard &&
-        cardFocus.includes(FOCUSKEY.HOME_ELEMENTS)
+        cardFocus.includes(cardFocus)
       ) {
         {
           setFocus(focusElement as string);
