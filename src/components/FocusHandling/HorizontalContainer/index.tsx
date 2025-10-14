@@ -1,5 +1,5 @@
 export const HorizontalContainer = () => {
-    return <></>
-}
+  return <></>;
+};
 
 //definisi generican horizontal container koji ces da koristis svuda

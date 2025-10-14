@@ -5,10 +5,19 @@ import { useEffect, useState } from "react";
 
 export const useMovies = () => {
   const { data: upcomingMovies } = useQuery(getUpcomingMoviesOptions());
-  const [focusedID, setFocusedId] = useState(
-    upcomingMovies?.results[0]?.id || 0,
-  );
-  const { data: details } = useQuery(getDetailsOptions(focusedID));
+
+  const initialId = upcomingMovies?.results[0]?.id;
+  const [focusedID, setFocusedId] = useState<number | undefined>(initialId);
+
+  useEffect(() => {
+    if (initialId && !focusedID) {
+      setFocusedId(initialId);
+    }
+  }, [initialId, focusedID]);
+  const { data: details } = useQuery({
+    ...getDetailsOptions(focusedID!),
+    enabled: !!focusedID,
+  });
   const queryClient = useQueryClient();
 
   const [movieInfo, setMovieInfo] = useState({

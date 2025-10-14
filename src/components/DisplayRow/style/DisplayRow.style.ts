@@ -41,5 +41,4 @@ export const Cardswrapper = styled(RowHContainer)`
   width: 100%;
   height: 100%;
   white-space: nowrap;
-  padding-right: 50px;
 `;

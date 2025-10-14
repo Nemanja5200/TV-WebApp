@@ -19,7 +19,7 @@ export const useScrollOnFocus = () => {
 
   const HorizontalScroll = useCallback(
     ({ x }: { x: number }) => {
-      const offset = 250;
+      const offset = 400;
       if (scrollingRefHorizontal.current) {
         scrollingRefHorizontal.current.scrollTo({
           left: x - offset,
