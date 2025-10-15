@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import {
-  ButtonStyleType,
-  ImageStyleType,
-} from "@/pages/Details/types/PropTypes.ts";
+import { ButtonStyleType } from "@/pages/Details/types/PropTypes.ts";
 
 export const ButtonContainer = styled.div<ButtonStyleType>`
   position: relative;
@@ -12,7 +9,8 @@ export const ButtonContainer = styled.div<ButtonStyleType>`
     typeof $height === "number" ? `${$height}px` : $height || "auto"};
   padding: ${({ $padding }) =>
     typeof $padding === "number" ? `${$padding}px` : $padding || "0"};
-  background-color: ${({ $backgroundColor }) => $backgroundColor || "#2F2F2F"};
+  background-color: ${({ $backgroundColor, $focused }) =>
+    $focused ? "#ED1C24" : $backgroundColor || "#2F2F2F"};
   margin: ${({ $margin }) =>
     typeof $margin === "number" ? `${$margin}px` : $margin || "0"};
   border-radius: 300px;

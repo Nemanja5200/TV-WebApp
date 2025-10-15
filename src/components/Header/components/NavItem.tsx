@@ -8,6 +8,7 @@ import { useNavFocus } from "@/components/Header/hooks/useNavFocus.tsx";
 export const NavItem: FC<NavItemProps> = ({ label, navKey }) => {
   const { homeNav, moviesNav } = useNavFocus();
   const { ref, focused } = useFocusable({
+    saveLastFocusedChild: true,
     focusKey: navKey,
     onFocus: () => {
       switch (navKey) {

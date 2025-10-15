@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import {
   HeaderLogo,
   HeaderWrapper,
@@ -8,7 +8,6 @@ import { IMAGE_PATHS } from "@/constants/imagePaths.ts";
 import { NAVBAR } from "@/components/Header/type/NavElements.ts";
 import {
   FocusContext,
-  setFocus,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
 import { NavItem } from "@/components/Header/components/NavItem.tsx";
@@ -20,9 +19,7 @@ export const Header: FC<HeaderProps> = ({ focusKey: focusNav }) => {
     saveLastFocusedChild: true,
     trackChildren: false,
   });
-  useEffect(() => {
-    setFocus(NAVBAR.HOME);
-  }, []);
+
   return (
     <>
       <FocusContext.Provider value={focusNav}>

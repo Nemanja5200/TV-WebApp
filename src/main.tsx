@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 
 init({
   distanceCalculationMethod: "center",
-  debug: false,
+  debug: true,
   visualDebug: false,
   throttle: 130,
   throttleKeypresses: true,

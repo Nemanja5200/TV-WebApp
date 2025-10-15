@@ -6,6 +6,7 @@ export interface ButtonStyleType {
   $padding?: number | string;
   $backgroundColor?: string;
   $margin?: string | number;
+  $focused?: boolean;
 }
 
 export interface ButtonPropsType extends ButtonStyleType, ImageStyleType {
@@ -13,6 +14,7 @@ export interface ButtonPropsType extends ButtonStyleType, ImageStyleType {
   label?: string;
   IconIMG?: string;
   buttonType: ButtonType;
+  focusKey?: string;
 }
 
 export interface ImageStyleType {

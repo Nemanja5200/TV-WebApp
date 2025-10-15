@@ -20,7 +20,7 @@ export const ChannelsWidget: FC<ChannelWidgetPropsTypes> = ({
 }) => {
   const { ref } = useFocusable({
     focusKey: widgetKey,
-    saveLastFocusedChild: false,
+    saveLastFocusedChild: true,
     isFocusBoundary: false,
   });
   return (
