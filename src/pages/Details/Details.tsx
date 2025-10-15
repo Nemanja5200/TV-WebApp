@@ -19,6 +19,7 @@ import {
 } from "@noriginmedia/norigin-spatial-navigation";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 import { useDetails } from "@/pages/Details/hooks/useDetails.tsx";
+import { useFocusManager } from "@/hooks/useFocusManager.tsx";
 
 export const Details: FC = () => {
   const { onBackClick } = useDetails();

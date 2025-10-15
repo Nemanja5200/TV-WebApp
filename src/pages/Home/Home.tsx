@@ -8,6 +8,7 @@ import {
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
 import { useFocusManager } from "@/hooks/useFocusManager.tsx";
+import { NAVBAR } from "@/components/Header/type/NavElements.ts";
 
 export const Home: FC<HomeProps> = ({ focusKey: homeKey }) => {
   const { ref } = useFocusable({
@@ -15,7 +16,7 @@ export const Home: FC<HomeProps> = ({ focusKey: homeKey }) => {
     saveLastFocusedChild: false,
   });
 
-  useFocusManager();
+  useFocusManager(NAVBAR.HOME);
   return (
     <>
       <FocusContext.Provider value={homeKey}>

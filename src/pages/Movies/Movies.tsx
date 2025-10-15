@@ -21,14 +21,17 @@ import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 import { useScrollOnFocus } from "@/hooks/useScrollOnFocus.tsx";
 import { useMovies } from "@/pages/Movies/hooks/useMovies.tsx";
 import { IMAGE_POSTER_URL } from "@/utils/constants/Links.ts";
+import { NAVBAR } from "@/components/Header/type/NavElements.ts";
+import { useFocusManager } from "@/hooks/useFocusManager.tsx";
 
 export const Movies: FC<MoviesPropsType> = ({ focusKey: moviesKey }) => {
   const { upcomingMovies, details, movieInfo, setFocusedId } = useMovies();
   const { scrollingRefHorizontal, HorizontalScroll } = useScrollOnFocus();
-
   const { ref } = useFocusable({
     focusKey: moviesKey,
   });
+
+  useFocusManager(NAVBAR.MOVIES);
   return (
     <>
       <FocusContext.Provider value={moviesKey}>

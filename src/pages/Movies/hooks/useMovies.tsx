@@ -3,6 +3,7 @@ import { getUpcomingMoviesOptions } from "@/pages/Movies/queryOptions/getUpcomin
 import { getDetailsOptions } from "@/pages/Movies/queryOptions/getDetailsOptions.ts";
 import { useEffect, useState } from "react";
 import { useBackgroundContext } from "@/context/BackgroundContext.tsx";
+import { setFocus } from "@noriginmedia/norigin-spatial-navigation";
 
 export const useMovies = () => {
   const { setBackgroundColor, setBackgroundImg } = useBackgroundContext();

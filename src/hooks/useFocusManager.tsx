@@ -1,15 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { setFocus } from "@noriginmedia/norigin-spatial-navigation";
-import { NAVBAR } from "@/components/Header/type/NavElements.ts";
 
-export const useFocusManager = () => {
+export const useFocusManager = (defaultFocusKey: string) => {
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!location.state?.returnFromDetails) {
-      setFocus(NAVBAR.HOME);
+      setFocus(defaultFocusKey);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
