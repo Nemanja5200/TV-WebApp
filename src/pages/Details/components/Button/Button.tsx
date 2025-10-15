@@ -3,9 +3,12 @@ import {
   BackIcon,
   BackIconContainer,
   ButtonContainer,
+  TextContainer,
+  WatchIcon,
+  WatchIconContainer,
 } from "@/pages/Details/components/Button/style/Button.style.ts";
-import { IMAGE_PATHS } from "@/constants/imagePaths.ts";
 import { ButtonPropsType } from "@/pages/Details/types/PropTypes.ts";
+import { BUTTON_TYPE } from "@/pages/Details/components/Button/consts/ButtonType.ts";
 
 export const Button: FC<ButtonPropsType> = ({
   $width,
@@ -13,19 +16,41 @@ export const Button: FC<ButtonPropsType> = ({
   $backgroundColor,
   $padding,
   IconIMG,
+  label,
+  buttonType,
+  $margin,
 }) => {
-  return (
-    <>
-      <ButtonContainer
-        $width={$width}
-        $height={$height}
-        $padding={$padding}
-        $backgroundColor={$backgroundColor}
-      >
+  let content = null;
+
+  switch (buttonType) {
+    case BUTTON_TYPE.BACK:
+      content = (
         <BackIconContainer>
           <BackIcon src={IconIMG} />
         </BackIconContainer>
-      </ButtonContainer>
-    </>
+      );
+      break;
+    case BUTTON_TYPE.WATCH_NOW:
+      content = (
+        <WatchIconContainer>
+          <WatchIcon src={IconIMG} />
+          <TextContainer>{label}</TextContainer>
+        </WatchIconContainer>
+      );
+      break;
+    default:
+      content = null;
+  }
+
+  return (
+    <ButtonContainer
+      $width={$width}
+      $height={$height}
+      $padding={$padding}
+      $backgroundColor={$backgroundColor}
+      $margin={$margin}
+    >
+      {content}
+    </ButtonContainer>
   );
 };

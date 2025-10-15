@@ -1,10 +1,9 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { MoviesPropsType } from "@/pages/Movies/types/MoviesTypes.ts";
 import {
   FocusContext,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
-import { useBackgroundContext } from "@/context/BackgroundContext.tsx";
 import {
   DescriptionContainer,
   DescriptionHeaderContainer,
@@ -24,11 +23,6 @@ import { useMovies } from "@/pages/Movies/hooks/useMovies.tsx";
 import { IMAGE_POSTER_URL } from "@/utils/constants/Links.ts";
 
 export const Movies: FC<MoviesPropsType> = ({ focusKey: moviesKey }) => {
-  const { setBackgroundColor, setBackgroundImg } = useBackgroundContext();
-  useEffect(() => {
-    setBackgroundColor("#151515");
-    setBackgroundImg(undefined);
-  }, [setBackgroundColor, setBackgroundImg]);
   const { upcomingMovies, details, movieInfo, setFocusedId } = useMovies();
   const { scrollingRefHorizontal, HorizontalScroll } = useScrollOnFocus();
 

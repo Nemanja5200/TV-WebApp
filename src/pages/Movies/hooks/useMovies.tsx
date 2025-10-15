@@ -2,8 +2,15 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getUpcomingMoviesOptions } from "@/pages/Movies/queryOptions/getUpcomingMoviesOptions.ts";
 import { getDetailsOptions } from "@/pages/Movies/queryOptions/getDetailsOptions.ts";
 import { useEffect, useState } from "react";
+import { useBackgroundContext } from "@/context/BackgroundContext.tsx";
 
 export const useMovies = () => {
+  const { setBackgroundColor, setBackgroundImg } = useBackgroundContext();
+  useEffect(() => {
+    setBackgroundColor("#151515");
+    setBackgroundImg(undefined);
+  }, [setBackgroundColor, setBackgroundImg]);
+
   const { data: upcomingMovies } = useQuery(getUpcomingMoviesOptions());
 
   const initialId = upcomingMovies?.results[0]?.id;
