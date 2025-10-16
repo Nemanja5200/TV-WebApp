@@ -48,7 +48,7 @@ export const Details: FC = () => {
           <DetailsContentContainer>
             <MovieInfoContainer>
               <MovieInfo>{detailsData?.genre}</MovieInfo>
-              <MovieInfo>{detailsData?.genre} Minutes</MovieInfo>
+              <MovieInfo>{detailsData?.duration} Minutes</MovieInfo>
               <MovieInfo>
                 {detailsData?.country} - {detailsData?.release_date.slice(0, 4)}{" "}
                 - PG - IMDb: {Number(detailsData?.rating).toFixed(2)}

@@ -10,7 +10,6 @@ import {
   RawMovieResponse,
   RawSeriesDetails,
   RawTVResponse,
-  SeriesDetailsResponse,
   TVShowsResponse,
 } from "@/types/TMBDTypes.ts";
 
@@ -56,11 +55,11 @@ export const tmdbService = {
     return ParseTMDBResponse(response.data) as DetailsResponse;
   },
 
-  getSeriesDetails: async (id: number): Promise<SeriesDetailsResponse> => {
+  getSeriesDetails: async (id: number): Promise<DetailsResponse> => {
     const response = await api.get<RawSeriesDetails>(
       TMBD_ROUTE.SDETAILS + id.toString(),
     );
-    return ParseTMDBResponse(response.data) as SeriesDetailsResponse;
+    return ParseTMDBResponse(response.data) as DetailsResponse;
   },
 
   getMovieCredits: async (id: number): Promise<CreditsResponse> => {
