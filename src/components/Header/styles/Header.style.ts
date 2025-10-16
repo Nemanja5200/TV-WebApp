@@ -34,7 +34,8 @@ export const NavElement = styled.div<NavElemetProps>`
   font-family: Inter, sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
-  color: ${({ $focused }) => ($focused ? "#FFFFFF" : "#575757")};
+  color: ${({ $focused, $isActiveNav }) =>
+    $focused || $isActiveNav ? "#FFFFFF" : "#575757"};
   line-height: 100%;
   letter-spacing: 6%;
   padding-bottom: 4px;

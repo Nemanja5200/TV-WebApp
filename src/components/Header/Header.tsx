@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import {
   HeaderLogo,
   HeaderWrapper,
@@ -8,16 +8,19 @@ import { IMAGE_PATHS } from "@/constants/imagePaths.ts";
 import { NAVBAR } from "@/components/Header/type/NavElements.ts";
 import {
   FocusContext,
+  getCurrentFocusKey,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
 import { NavItem } from "@/components/Header/components/NavItem.tsx";
 import { HeaderProps } from "@/components/Header/type/HeaderProps.ts";
 
 export const Header: FC<HeaderProps> = ({ focusKey: focusNav }) => {
+  const [lastFocusedNavKey, setLastFocusedNavKey] = useState<string>("HOME");
+
   const { ref } = useFocusable({
     focusKey: focusNav,
     saveLastFocusedChild: true,
-    trackChildren: false,
+    trackChildren: true,
   });
 
   return (
@@ -27,7 +30,13 @@ export const Header: FC<HeaderProps> = ({ focusKey: focusNav }) => {
           <HeaderLogo src={IMAGE_PATHS.LOGO} />
           <NavMenuContainer ref={ref}>
             {Object.entries(NAVBAR).map(([key, label]) => (
-              <NavItem key={key} navKey={key} label={label} />
+              <NavItem
+                key={key}
+                navKey={key}
+                label={label}
+                isActiveNav={lastFocusedNavKey === key}
+                onNavFocus={() => setLastFocusedNavKey(key)}
+              />
             ))}
           </NavMenuContainer>
         </HeaderWrapper>

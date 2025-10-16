@@ -5,7 +5,12 @@ import { NavItemProps } from "@/components/Header/type/NavElementsProps.ts";
 import { NAVBAR } from "@/components/Header/type/NavElements.ts";
 import { useNavFocus } from "@/components/Header/hooks/useNavFocus.tsx";
 
-export const NavItem: FC<NavItemProps> = ({ label, navKey }) => {
+export const NavItem: FC<NavItemProps> = ({
+  label,
+  navKey,
+  isActiveNav,
+  onNavFocus,
+}) => {
   const { homeNav, moviesNav } = useNavFocus();
   const { ref, focused } = useFocusable({
     saveLastFocusedChild: true,
@@ -14,9 +19,11 @@ export const NavItem: FC<NavItemProps> = ({ label, navKey }) => {
       switch (navKey) {
         case NAVBAR.HOME:
           homeNav();
+          onNavFocus();
           break;
         case NAVBAR.MOVIES:
           moviesNav();
+          onNavFocus();
           break;
         default:
           break;
@@ -25,7 +32,7 @@ export const NavItem: FC<NavItemProps> = ({ label, navKey }) => {
   });
 
   return (
-    <NavElement ref={ref} $focused={focused}>
+    <NavElement ref={ref} $focused={focused} $isActiveNav={isActiveNav}>
       {label}
     </NavElement>
   );
