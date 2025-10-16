@@ -4,7 +4,10 @@ import {
   setFocus,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
-import { IMAGE_HOME_URL, IMAGE_MOVIES_URL } from "@/utils/constants/Links.ts";
+import {
+  IMAGE_HOME_URL,
+  IMAGE_MOVIES_URL,
+} from "@/constants/constants/Links.ts";
 import {
   CardContainer,
   CardPoster,
@@ -14,7 +17,7 @@ import {
 import { CARDTYPE } from "@/components/Card/consts/CARDTYPE.ts";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 import { useNavigate } from "react-router-dom";
-import { ROUTES } from "@/utils/constants/Routes.ts";
+import { ROUTES } from "@/constants/constants/Routes.ts";
 export const Card: FC<CardProps> = ({
   focusKey: cardFocus,
   poster,

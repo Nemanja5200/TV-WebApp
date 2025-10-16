@@ -8,4 +8,8 @@ export const ChannelCardContainer = styled.div<{ $focused: boolean }>`
   gap: 24px;
   background-color: #181818;
   border: 4px solid ${({ $focused }) => ($focused ? "#ED1C24" : "transparent")};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

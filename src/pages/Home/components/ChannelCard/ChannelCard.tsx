@@ -5,10 +5,16 @@ import {
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
 import { ChannelCardPropsTypes } from "@/pages/Home/components/ChannelCard/types/ChannelCardTypes.tsx";
+import {
+  ChannelLogo,
+  ChannelName,
+} from "@/pages/Home/components/ChannelsWidget/style/ChannelsWidget.style.ts";
 
 export const ChannelCard: FC<ChannelCardPropsTypes> = ({
   focusKey: channelKey,
   onLeftFocusElement,
+  channelLogo,
+  channelName,
 }) => {
   const { ref, focused } = useFocusable({
     focusKey: channelKey,
@@ -24,7 +30,10 @@ export const ChannelCard: FC<ChannelCardPropsTypes> = ({
   });
   return (
     <>
-      <ChannelCardContainer ref={ref} $focused={focused}></ChannelCardContainer>
+      <ChannelCardContainer ref={ref} $focused={focused}>
+        <ChannelLogo src={channelLogo} />
+        <ChannelName>{channelName}</ChannelName>
+      </ChannelCardContainer>
     </>
   );
 };

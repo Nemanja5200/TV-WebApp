@@ -4,7 +4,7 @@ import { Header, Layout } from "@/components";
 import { Home } from "@/pages/Home";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { ROUTES } from "@/utils/constants/Routes.ts";
+import { ROUTES } from "@/constants/constants/Routes.ts";
 import { Movies } from "@/pages/Movies";
 import { BackgroundProvider } from "@/context/BackgroundContext.tsx";
 import { Details } from "@/pages/Details/Details.tsx";

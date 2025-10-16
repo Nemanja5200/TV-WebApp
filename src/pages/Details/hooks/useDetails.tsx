@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { setFocus } from "@noriginmedia/norigin-spatial-navigation";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 import { useLocation, useNavigate, Location } from "react-router-dom";
-import { ROUTES } from "@/utils/constants/Routes.ts";
+import { ROUTES } from "@/constants/constants/Routes.ts";
 import { useQuery } from "@tanstack/react-query";
 import { getMovieDetailsOptions } from "@/pages/Movies/queryOptions/getMovieDetailsOptions.ts";
 import { getSeriesDetailsOptions } from "@/pages/Details/queryOptions/getSeriesDetailsOptions.ts";

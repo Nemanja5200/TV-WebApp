@@ -19,7 +19,7 @@ import {
 } from "@noriginmedia/norigin-spatial-navigation";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 import { useDetails } from "@/pages/Details/hooks/useDetails.tsx";
-import { IMAGE_POSTER_URL } from "@/utils/constants/Links.ts";
+import { IMAGE_POSTER_URL } from "@/constants/constants/Links.ts";
 
 export const Details: FC = () => {
   const { onBackClick, detailsData, creditsData, isTVShow } = useDetails();

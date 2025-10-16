@@ -29,3 +29,24 @@ export const ChannelsWidgetHeaderContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const ChannelLogo = styled.img`
+  width: 45px;
+  height: 45px;
+  angle: 0 deg;
+  opacity: 1;
+`;
+
+export const ChannelName = styled.span`
+  width: 245px;
+  height: 19px;
+  angle: 0 deg;
+  opacity: 1;
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+`;

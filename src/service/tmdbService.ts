@@ -1,6 +1,6 @@
 import { api } from "@/api/api.ts";
 import { ParseTMDBResponse } from "@/utils/Parser.ts";
-import { TMBD_ROUTE } from "@/utils/constants/TMBD.ts";
+import { TMBD_ROUTE } from "@/constants/constants/TMBD.ts";
 import {
   CreditsResponse,
   DetailsResponse,
