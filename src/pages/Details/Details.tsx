@@ -19,10 +19,10 @@ import {
 } from "@noriginmedia/norigin-spatial-navigation";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
 import { useDetails } from "@/pages/Details/hooks/useDetails.tsx";
-import { useFocusManager } from "@/hooks/useFocusManager.tsx";
+import { IMAGE_POSTER_URL } from "@/utils/constants/Links.ts";
 
 export const Details: FC = () => {
-  const { onBackClick } = useDetails();
+  const { onBackClick, detailsData, creditsData } = useDetails();
 
   const { ref, focusKey } = useFocusable({
     focusKey: FOCUSKEY.DETAILS,
@@ -47,25 +47,30 @@ export const Details: FC = () => {
           />
           <DetailsContentContainer>
             <MovieInfoContainer>
-              <MovieInfo>Drama</MovieInfo>
-              <MovieInfo>98 Minutes</MovieInfo>
-              <MovieInfo>US - 1987 - PG - IMDb: 7.7</MovieInfo>
+              <MovieInfo>{detailsData?.genre}</MovieInfo>
+              <MovieInfo>{detailsData?.genre} Minutes</MovieInfo>
+              <MovieInfo>
+                {detailsData?.country} - {detailsData?.release_date.slice(0, 4)}{" "}
+                - PG - IMDb: {Number(detailsData?.rating).toFixed(2)}
+              </MovieInfo>
             </MovieInfoContainer>
             <MovieItemsContainer>
-              <MovieImage src={IMAGE_PATHS.TESTPOSTER} />
+              <MovieImage src={IMAGE_POSTER_URL + detailsData?.poster} />
               <DescriptionContainer>
-                <MovieHeader>Empire Of The Sun</MovieHeader>
+                <MovieHeader>{detailsData?.title}</MovieHeader>
                 <MovieDescriptionContainer>
-                  Boolean union variant background text vertical rectangle
-                  background horizontal. Boolean union variant background text
-                  vertical rectangle background horizontal. Pen export mask font
-                  image ellipse{" "}
+                  {detailsData?.overview}
                 </MovieDescriptionContainer>
                 <MovieInfoContainer $width="698px">
-                  <MovieInfo>Director: Enzo G. Castellari</MovieInfo>
                   <MovieInfo>
-                    Cast: Enzo G. Castellari, Enzo G. Castellari, Enzo G.
-                    Castellari, Enzo G. Castellar
+                    Director: {creditsData?.director || "Unknown"}
+                  </MovieInfo>
+                  <MovieInfo>
+                    Cast:{" "}
+                    {creditsData?.cast
+                      .slice(0, 4)
+                      .map((member) => member.name)
+                      .join(", ") || "No cast information"}
                   </MovieInfo>
                 </MovieInfoContainer>
                 <Button

@@ -86,6 +86,9 @@ export const MovieDescriptionContainer = styled.div`
     font-size: 22px;
     line-height: 31px;
     letter-spacing: 0%;
-
-
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient: vertical;
 `;

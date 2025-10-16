@@ -2,11 +2,15 @@ import { api } from "@/api/api.ts";
 import { ParseTMDBResponse } from "@/utils/Parser.ts";
 import { TMBD_ROUTE } from "@/utils/constants/TMBD.ts";
 import {
+  CreditsResponse,
   DetailsResponse,
   MoviesResponse,
+  RawCredits,
   RawDetailsResponse,
   RawMovieResponse,
+  RawSeriesDetails,
   RawTVResponse,
+  SeriesDetailsResponse,
   TVShowsResponse,
 } from "@/types/TMBDTypes.ts";
 
@@ -45,10 +49,31 @@ export const tmdbService = {
     return ParseTMDBResponse(response.data) as MoviesResponse;
   },
 
-  getDetails: async (id: number): Promise<DetailsResponse> => {
+  getMovieDetails: async (id: number): Promise<DetailsResponse> => {
     const response = await api.get<RawDetailsResponse>(
-      TMBD_ROUTE.DETAILS + id.toString(),
+      TMBD_ROUTE.MDETAILS + id.toString(),
     );
     return ParseTMDBResponse(response.data) as DetailsResponse;
+  },
+
+  getSeriesDetails: async (id: number): Promise<SeriesDetailsResponse> => {
+    const response = await api.get<RawSeriesDetails>(
+      TMBD_ROUTE.SDETAILS + id.toString(),
+    );
+    return ParseTMDBResponse(response.data) as SeriesDetailsResponse;
+  },
+
+  getMovieCredits: async (id: number): Promise<CreditsResponse> => {
+    const response = await api.get<RawCredits>(
+      TMBD_ROUTE.MOViE_CREDITS.replace("{id}", id.toString()),
+    );
+    return ParseTMDBResponse(response.data) as CreditsResponse;
+  },
+
+  getSeriesCredits: async (id: number): Promise<CreditsResponse> => {
+    const response = await api.get<RawCredits>(
+      TMBD_ROUTE.SERIES_CREDITS.replace("{id}", id.toString()),
+    );
+    return ParseTMDBResponse(response.data) as CreditsResponse;
   },
 };

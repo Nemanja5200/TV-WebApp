@@ -56,6 +56,7 @@ export const Card: FC<CardProps> = ({
         state: {
           from: location.pathname,
           focusKey: cardFocus,
+          id: id,
         },
       });
     },

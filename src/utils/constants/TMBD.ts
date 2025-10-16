@@ -3,5 +3,8 @@ export const TMBD_ROUTE = {
   TRENDING_MOVIES: "/trending/movie/",
   POPULAR_SHOWS: "/tv/popular",
   UPCOMING_MOVIES: "/movie/upcoming",
-  DETAILS: "/movie/",
+  MDETAILS: "/movie/",
+  SDETAILS: "/tv/",
+  MOViE_CREDITS: "movie/{id}/credits",
+  SERIES_CREDITS: "tv/{id}/credits",
 };

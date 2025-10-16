@@ -1,50 +1,62 @@
 import {
+  CastMember,
+  Credits,
+  CrewMember,
   Details,
   Movie,
   MoviesResponse,
   ParsedMediaResponse,
+  RawCastMember,
+  RawCreditsResponse,
+  RawCrewMember,
   RawDetails,
   RawDetailsResponse,
   RawMediaResponse,
   RawMovie,
+  RawMovieResponse,
+  RawSeriesDetails,
+  RawSeriesDetailsResponse,
+  RawTVResponse,
   RawTVShow,
   TVShow,
   TVShowsResponse,
 } from "@/types/TMBDTypes.ts";
-import {
-  isDetailsResponse,
-  isMovieResponse,
-  isTVResponse,
-} from "@/types/typeGuards.ts";
+import { getResponseType, TMBD_RESPONCE_TYPE } from "@/utils/utils.ts";
 
 export const ParseTMDBResponse = <
   T extends RawMediaResponse | RawDetailsResponse,
 >(
   rawResponse: T,
 ): ParsedMediaResponse | Details => {
-  if (isDetailsResponse(rawResponse)) {
-    return ParseDetails(rawResponse);
-  }
+  switch (getResponseType(rawResponse)) {
+    case TMBD_RESPONCE_TYPE.MDETAILS:
+      return ParseMovieDetails(rawResponse as RawDetailsResponse);
 
-  if (isMovieResponse(rawResponse)) {
-    return {
-      page: rawResponse.page,
-      total_pages: rawResponse.total_pages,
-      total_results: rawResponse.total_results,
-      results: rawResponse.results.map(ParseMovie),
-    } as MoviesResponse;
-  }
+    case TMBD_RESPONCE_TYPE.SDETAISL:
+      return ParseSeriesDetails(rawResponse as RawSeriesDetailsResponse);
 
-  if (isTVResponse(rawResponse)) {
-    return {
-      page: rawResponse.page,
-      total_pages: rawResponse.total_pages,
-      total_results: rawResponse.total_results,
-      results: rawResponse.results.map(ParseTVShow),
-    } as TVShowsResponse;
-  }
+    case TMBD_RESPONCE_TYPE.MOVIE:
+      return {
+        page: (rawResponse as RawMovieResponse).page,
+        total_pages: (rawResponse as RawMovieResponse).total_pages,
+        total_results: (rawResponse as RawMovieResponse).total_results,
+        results: (rawResponse as RawMovieResponse).results.map(ParseMovie),
+      } as MoviesResponse;
 
-  throw new Error("Unknown response type");
+    case TMBD_RESPONCE_TYPE.TVSHOW:
+      return {
+        page: (rawResponse as RawTVResponse).page,
+        total_pages: (rawResponse as RawTVResponse).total_pages,
+        total_results: (rawResponse as RawTVResponse).total_results,
+        results: (rawResponse as RawTVResponse).results.map(ParseTVShow),
+      } as TVShowsResponse;
+
+    case TMBD_RESPONCE_TYPE.CREDITS:
+      return ParseCredits(rawResponse as RawCreditsResponse);
+
+    default:
+      throw new Error("Unknown response type");
+  }
 };
 
 const ParseMovie = (rawMovie: RawMovie): Movie => ({
@@ -59,13 +71,57 @@ const ParseTVShow = (rawTVShow: RawTVShow): TVShow => ({
   poster: rawTVShow.poster_path,
 });
 
-const ParseDetails = (rawDetails: RawDetails): Details => ({
+const ParseMovieDetails = (rawDetails: RawDetails): Details => ({
   title: rawDetails.title,
   genre: rawDetails.genres[0]?.name || "Unknown",
   country: rawDetails.origin_country[0] || "Unknown",
   duration: rawDetails.runtime,
   heroPoster: rawDetails.backdrop_path || "",
+  poster: rawDetails.poster_path || "",
   rating: rawDetails.vote_average,
   overview: rawDetails.overview,
   release_date: rawDetails.release_date,
 });
+
+const ParseSeriesDetails = (rawDetails: RawSeriesDetails): Details => ({
+  title: rawDetails.name,
+  genre: rawDetails.genres[0]?.name || "Unknown",
+  country: rawDetails.origin_country[0] || "Unknown",
+  duration: rawDetails.number_of_seasons,
+  heroPoster: rawDetails.backdrop_path || "",
+  poster: rawDetails.poster_path || "",
+  rating: rawDetails.vote_average,
+  overview: rawDetails.overview,
+  release_date: rawDetails.first_air_date,
+});
+
+const ParseCastMember = (rawCast: RawCastMember): CastMember => ({
+  id: rawCast.id,
+  name: rawCast.name,
+  character: rawCast.character,
+  profilePath: rawCast.profile_path,
+});
+
+const ParseCrewMember = (rawCrew: RawCrewMember): CrewMember => ({
+  id: rawCrew.id,
+  name: rawCrew.name,
+  job: rawCrew.job,
+  department: rawCrew.department,
+});
+
+export const ParseCredits = (rawCredits: RawCreditsResponse): Credits => {
+  const cast = rawCredits.cast
+    .sort((a, b) => a.order - b.order)
+    .slice(0, 10)
+    .map(ParseCastMember);
+
+  const crew = rawCredits.crew.map(ParseCrewMember);
+
+  const director = rawCredits.crew.find((c) => c.job === "Director")?.name;
+
+  return {
+    cast,
+    director,
+    crew,
+  };
+};

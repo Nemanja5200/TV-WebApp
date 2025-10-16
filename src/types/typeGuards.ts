@@ -1,7 +1,9 @@
 import {
+  RawCreditsResponse,
   RawDetailsResponse,
   RawMediaResponse,
   RawMovieResponse,
+  RawSeriesDetailsResponse,
   RawTVResponse,
 } from "@/types/TMBDTypes.ts";
 
@@ -25,10 +27,35 @@ export const isTVResponse = (
   );
 };
 
-export const isDetailsResponse = (
-  response: RawMediaResponse | RawDetailsResponse,
+export const isMovieDetailsResponse = (
+  response: RawMediaResponse,
 ): response is RawDetailsResponse => {
   return (
     !("results" in response) && "genres" in response && "runtime" in response
+  );
+};
+
+export const isSeriesDetailsResponse = (
+  response: RawMediaResponse,
+): response is RawSeriesDetailsResponse => {
+  return (
+    !("results" in response) &&
+    "name" in response &&
+    "first_air_date" in response &&
+    "number_of_seasons" in response &&
+    "number_of_episodes" in response
+  );
+};
+
+export const isCreditsResponse = (
+  response: any,
+): response is RawCreditsResponse => {
+  return (
+    typeof response === "object" &&
+    "id" in response &&
+    "cast" in response &&
+    "crew" in response &&
+    Array.isArray(response.cast) &&
+    Array.isArray(response.crew)
   );
 };

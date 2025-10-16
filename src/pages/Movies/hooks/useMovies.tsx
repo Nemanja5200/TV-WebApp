@@ -1,9 +1,8 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { getUpcomingMoviesOptions } from "@/pages/Movies/queryOptions/getUpcomingMoviesOptions.ts";
-import { getDetailsOptions } from "@/pages/Movies/queryOptions/getDetailsOptions.ts";
+import { getMovieDetailsOptions } from "@/pages/Movies/queryOptions/getMovieDetailsOptions.ts";
 import { useEffect, useState } from "react";
 import { useBackgroundContext } from "@/context/BackgroundContext.tsx";
-import { setFocus } from "@noriginmedia/norigin-spatial-navigation";
 
 export const useMovies = () => {
   const { setBackgroundColor, setBackgroundImg } = useBackgroundContext();
@@ -23,7 +22,7 @@ export const useMovies = () => {
     }
   }, [initialId, focusedID]);
   const { data: details } = useQuery({
-    ...getDetailsOptions(focusedID!),
+    ...getMovieDetailsOptions(focusedID!),
     enabled: !!focusedID,
   });
   const queryClient = useQueryClient();
@@ -56,7 +55,7 @@ export const useMovies = () => {
           if (nextIndex < upcomingMovies.results.length) {
             const nextMovieId = upcomingMovies.results[nextIndex].id;
 
-            queryClient.prefetchQuery(getDetailsOptions(nextMovieId));
+            queryClient.prefetchQuery(getMovieDetailsOptions(nextMovieId));
           }
         }
       }
