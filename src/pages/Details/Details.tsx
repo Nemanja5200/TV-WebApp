@@ -22,7 +22,7 @@ import { useDetails } from "@/pages/Details/hooks/useDetails.tsx";
 import { IMAGE_POSTER_URL } from "@/utils/constants/Links.ts";
 
 export const Details: FC = () => {
-  const { onBackClick, detailsData, creditsData } = useDetails();
+  const { onBackClick, detailsData, creditsData, isTVShow } = useDetails();
 
   const { ref, focusKey } = useFocusable({
     focusKey: FOCUSKEY.DETAILS,
@@ -48,7 +48,9 @@ export const Details: FC = () => {
           <DetailsContentContainer>
             <MovieInfoContainer>
               <MovieInfo>{detailsData?.genre}</MovieInfo>
-              <MovieInfo>{detailsData?.duration} Minutes</MovieInfo>
+              <MovieInfo>
+                {detailsData?.duration} {isTVShow ? "Seasons" : "Minutes"}
+              </MovieInfo>
               <MovieInfo>
                 {detailsData?.country} - {detailsData?.release_date.slice(0, 4)}{" "}
                 - PG - IMDb: {Number(detailsData?.rating).toFixed(2)}

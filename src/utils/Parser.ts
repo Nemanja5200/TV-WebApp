@@ -117,7 +117,13 @@ export const ParseCredits = (rawCredits: RawCreditsResponse): Credits => {
 
   const crew = rawCredits.crew.map(ParseCrewMember);
 
-  const director = rawCredits.crew.find((c) => c.job === "Director")?.name;
+  const director =
+    rawCredits.crew.find((c) => c.job === "Director")?.name ??
+    rawCredits.crew.find((c) => c.known_for_department === "Directing")?.name ??
+    rawCredits.crew.find((c) => c.job === "Producer")?.name ??
+    rawCredits.crew.find((c) => c.known_for_department === "Production")
+      ?.name ??
+    "Director info not available";
 
   return {
     cast,

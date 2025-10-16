@@ -48,7 +48,7 @@ export const isSeriesDetailsResponse = (
 };
 
 export const isCreditsResponse = (
-  response: any,
+  response: RawMediaResponse,
 ): response is RawCreditsResponse => {
   return (
     typeof response === "object" &&

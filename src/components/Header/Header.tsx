@@ -8,7 +8,6 @@ import { IMAGE_PATHS } from "@/constants/imagePaths.ts";
 import { NAVBAR } from "@/components/Header/type/NavElements.ts";
 import {
   FocusContext,
-  getCurrentFocusKey,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
 import { NavItem } from "@/components/Header/components/NavItem.tsx";

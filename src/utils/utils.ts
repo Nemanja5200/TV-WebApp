@@ -1,4 +1,4 @@
-import { RawDetailsResponse, RawMediaResponse } from "@/types/TMBDTypes.ts";
+import { RawMediaResponse } from "@/types/TMBDTypes.ts";
 import {
   isCreditsResponse,
   isMovieDetailsResponse,
