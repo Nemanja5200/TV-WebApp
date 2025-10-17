@@ -87,7 +87,7 @@ export const DescriptionHeaderContainer = styled.div`
 export const DescriptionTextContainer = styled.div`
   width: 698px;
   height: 124px;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 1.375rem;
   line-height: 31px;
 `;

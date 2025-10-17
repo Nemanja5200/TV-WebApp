@@ -9,7 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     }
     
     body{
-        font-family: Roboto Slab , sans-serif;
+        font-family: Inter , sans-serif;
         background-color: #0A0E12;
         color: #fff;
         min-height: 100vh;
