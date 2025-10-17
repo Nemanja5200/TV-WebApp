@@ -12,14 +12,20 @@ import {
 } from "@noriginmedia/norigin-spatial-navigation";
 import { NavItem } from "@/components/Header/components/NavItem.tsx";
 import { HeaderProps } from "@/components/Header/type/HeaderProps.ts";
+import { useLocation } from "react-router-dom";
+import { ROUTE_TO_NAV_KEY } from "@/constants/constants/Routes.ts";
 
 export const Header: FC<HeaderProps> = ({ focusKey: focusNav }) => {
-  const [lastFocusedNavKey, setLastFocusedNavKey] = useState<string>("HOME");
+  const location = useLocation();
+  const initialValue = ROUTE_TO_NAV_KEY[location.pathname] || "HOME";
+  const [lastFocusedNavKey, setLastFocusedNavKey] =
+    useState<string>(initialValue);
 
   const { ref } = useFocusable({
     focusKey: focusNav,
     saveLastFocusedChild: true,
     trackChildren: true,
+    preferredChildFocusKey: lastFocusedNavKey,
   });
 
   return (
