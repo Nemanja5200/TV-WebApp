@@ -7,7 +7,7 @@ export const CHANNEL_PICTURE_LINKS = {
 } as const;
 
 type ChannelKey = keyof typeof CHANNEL_PICTURE_LINKS;
-export const channels: ChannelKey[] = ["LOL", "CS2", "HADES", "MW2", "HALO"];
+export const channels = Object.keys(CHANNEL_PICTURE_LINKS) as ChannelKey[];
 
 export const CHANNEL_NAMES: Record<ChannelKey, string> = {
   LOL: "League of Legends",
