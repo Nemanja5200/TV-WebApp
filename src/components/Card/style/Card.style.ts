@@ -24,6 +24,10 @@ export const CardContainer = styled.div<{
   align-items: center;
   --text-color: ${({ $focused }) => ($focused ? "#FFFFFF" : "#ffffff99")};
   --is-focused: ${({ $focused }) => ($focused ? 1 : 0)};
+
+  transition: transform 0.3s ease;
+  transform: ${({ $focused }) =>
+    $focused ? "translateY(-8px)" : "translateY(0)"};
 `;
 
 export const CardPoster = styled.img`
