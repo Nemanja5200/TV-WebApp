@@ -17,4 +17,7 @@ export const ContentWrapper = styled.div<ContentWrapperProps>`
   background-size: cover;
   background-position: center;
   padding-top: 32px;
+
+  overflow-y: hidden;
+  overflow-x: hidden;
 `;
