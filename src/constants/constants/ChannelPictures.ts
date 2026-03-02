@@ -1,9 +1,11 @@
+const BASE = import.meta.env.BASE_URL;
+
 export const CHANNEL_PICTURE_LINKS = {
-  LOL: "/assets/Channel Pictures/LoL.png",
-  CS2: "/assets/Channel Pictures/CS2.webp",
-  HADES: "/assets/Channel Pictures/Hades 2.webp",
-  MW2: "/assets/Channel Pictures/MW2.webp",
-  HALO: "/assets/Channel Pictures/Halo.webp",
+  LOL: `${BASE}assets/Channel Pictures/LoL.png`,
+  CS2: `${BASE}assets/Channel Pictures/CS2.webp`,
+  HADES: `${BASE}assets/Channel Pictures/Hades 2.webp`,
+  MW2: `${BASE}assets/Channel Pictures/MW2.webp`,
+  HALO: `${BASE}assets/Channel Pictures/Halo.webp`,
 } as const;
 
 type ChannelKey = keyof typeof CHANNEL_PICTURE_LINKS;
