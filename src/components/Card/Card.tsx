@@ -16,7 +16,7 @@ import {
 } from "@/components/Card/style/Card.style.ts";
 import { CARDTYPE } from "@/components/Card/consts/CARDTYPE.ts";
 import { FOCUSKEY } from "@/constants/FocusKeys.ts";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ROUTES } from "@/constants/constants/Routes.ts";
 export const Card: FC<CardProps> = ({
   focusKey: cardFocus,
@@ -30,6 +30,7 @@ export const Card: FC<CardProps> = ({
   id,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { ref, focused } = useFocusable({
     focusKey: cardFocus,
     onFocus: (layout, props, details) => {
