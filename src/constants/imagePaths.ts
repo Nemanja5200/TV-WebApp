@@ -1,7 +1,9 @@
+const BASE = import.meta.env.BASE_URL;
+
 export const IMAGE_PATHS = {
-  TV_BACKGROUND: "/assets/Background.png",
-  LOGO: "/assets/Logo.png",
-  BACKICON: "/assets/BackIcon.png",
-  TESTPOSTER: "/assets/TestPoster.png",
-  WATCHICON: "/assets/WatchIcon.png",
+  TV_BACKGROUND: `${BASE}assets/Background.png`,
+  LOGO: `${BASE}assets/Logo.png`,
+  BACKICON: `${BASE}assets/BackIcon.png`,
+  TESTPOSTER: `${BASE}assets/TestPoster.png`,
+  WATCHICON: `${BASE}assets/WatchIcon.png`,
 };
