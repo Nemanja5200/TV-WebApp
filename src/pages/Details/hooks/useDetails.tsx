@@ -57,7 +57,14 @@ export const useDetails = () => {
   }, [setBackgroundColor, setBackgroundImg]);
 
   const onBackClick = () => {
-    navigate(location.state?.from || ROUTES.HOME, {
+    const fromPath = location.state?.from;
+    // Determine the correct route based on the stored path
+    let targetRoute = ROUTES.HOME;
+    if (fromPath?.includes("movies")) {
+      targetRoute = ROUTES.MOVIES;
+    }
+    
+    navigate(targetRoute, {
       state: {
         focusKey: location.state?.focusKey,
         returnFromDetails: true,
